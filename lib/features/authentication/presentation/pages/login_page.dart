@@ -8,6 +8,7 @@ import '../../../../common_widgets/buttons.dart';
 import '../../../../common_widgets/text_widgets.dart';
 import '../../../../utils/common.dart';
 import '../../../../utils/dimens/dimens.dart';
+import '../../../../utils/global_keys.dart';
 import '../../../../utils/styles/app_colors.dart';
 import '../../../../utils/styles/app_text_styles.dart';
 import '../../../app/app_state.dart';
@@ -45,13 +46,11 @@ class QpSkeletonLoginPage extends StatelessWidget {
       this.bodyTextStyle})
       : super(key: key);
 
-  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Form(
-        key: loginFormKey,
+        key: GlobalKeys.loginFormKey,
         child: Center(
           /** Card Widget **/
           child: Container(
@@ -104,16 +103,20 @@ class QpSkeletonLoginPage extends StatelessWidget {
                               QpRectangularCircleButton(
                                 btnText: buttonText1,
                                 onTap: () {
-                                  if (loginFormKey.currentState != null &&
-                                      loginFormKey.currentState!.validate()) {
+                                  if (GlobalKeys.loginFormKey.currentState !=
+                                          null &&
+                                      GlobalKeys.loginFormKey.currentState!
+                                          .validate()) {
                                     Common.hideKeyboard();
                                     if (onLogin != null) {
                                       onLogin!();
                                     }
                                     debugPrint("LoggedIn");
-                                  } else if (loginFormKey.currentState !=
+                                  } else if (GlobalKeys
+                                          .loginFormKey.currentState !=
                                       null) {
-                                    loginFormKey.currentState!.validate();
+                                    GlobalKeys.loginFormKey.currentState!
+                                        .validate();
                                   }
                                 },
                               ),

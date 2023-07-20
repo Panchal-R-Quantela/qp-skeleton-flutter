@@ -22,7 +22,7 @@ class LoginDemo extends StatelessWidget {
             image: AssetImage(ImagePath.kOnBoardingLogo2),
             fit: BoxFit.fill,
           )),*/
-          child: QpSkeletonLoginPage()),
+          child: QpSkeletonLoginPage(loginHeader: "Qp Skeleton")),
     );
   }
 }

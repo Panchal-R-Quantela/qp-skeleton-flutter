@@ -12,11 +12,12 @@ class LoginDemo extends StatelessWidget {
     return Scaffold(
       drawer: SideMenu(),
       body: Container(
-          decoration: const BoxDecoration(
+          color: Colors.green,
+          /*decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage(ImagePath.kOnBoardingLogo2),
             fit: BoxFit.fill,
-          )),
+          )),*/
           child: QpSkeletonLoginPage()),
     );
   }

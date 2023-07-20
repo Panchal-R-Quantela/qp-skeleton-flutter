@@ -46,7 +46,11 @@ class QpEmailTextFormField extends StatelessWidget with InputValidationMixin {
           return null;
         }
       },
-      onChanged: (value) => onChanged,
+      onChanged: (value) {
+        if(onChanged!=null){
+          onChanged!(value);
+        }
+      },
     );
   }
 }

@@ -69,12 +69,16 @@ class QpSkeletonLoginPage extends StatelessWidget {
                         bindRow(
                             icon: Icons.person,
                             child: QpEmailTextFormField(
-                                hintText: firstTextFieldHint)),
+                              hintText: firstTextFieldHint,
+                              onChanged: onChangedFirstField,
+                            )),
                         const VP(),
                         bindRow(
                             icon: Icons.lock,
                             child: QpPasswordTextFormField(
-                                hintText: secondTextFieldHint)),
+                              hintText: secondTextFieldHint,
+                              onChanged: onChangedSecondField,
+                            )),
                         VP(size: Dimens.d20.responsive()),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

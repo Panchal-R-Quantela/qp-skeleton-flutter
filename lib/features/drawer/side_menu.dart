@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SideMenu extends StatelessWidget {
-  SideMenu({Key? key}) : super(key: key);
+  String? headerPath;
+
+  SideMenu({Key? key, this.headerPath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +11,7 @@ class SideMenu extends StatelessWidget {
       child: ListView(
         children: [
           DrawerHeader(
-            child: Image.asset("assets/chair1.jpg"),
+            child: Image.asset(headerPath ?? "assets/chair1.jpg"),
           ),
           DrawerListTile(
             title: "Dashboard",

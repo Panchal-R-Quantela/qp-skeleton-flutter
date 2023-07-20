@@ -4,11 +4,11 @@ import 'package:qp_skeleton_flutter/features/app/app_bloc.dart';
 import 'package:qp_skeleton_flutter/features/app/app_state.dart';
 import '../utils/styles/app_text_styles.dart';
 
-class TitleTextBlackWidget extends StatelessWidget {
+class QpTitleTextBlackWidget extends StatelessWidget {
   final String title;
   final TextAlign? textAlign;
 
-  const TitleTextBlackWidget(this.title, {Key? key, this.textAlign})
+  const QpTitleTextBlackWidget(this.title, {Key? key, this.textAlign})
       : super(key: key);
 
   @override
@@ -20,12 +20,14 @@ class TitleTextBlackWidget extends StatelessWidget {
   }
 }
 
-class BodyTextWidget extends StatelessWidget {
+class QpBodyTextWidget extends StatelessWidget {
   final String title;
   final TextAlign? textAlign;
   final GestureTapCallback? onTap;
+  final TextStyle? textStyle;
 
-  const BodyTextWidget(this.title, {Key? key, this.textAlign, this.onTap})
+  const QpBodyTextWidget(this.title,
+      {Key? key, this.textAlign, this.onTap, this.textStyle})
       : super(key: key);
 
   @override
@@ -34,7 +36,8 @@ class BodyTextWidget extends StatelessWidget {
       return GestureDetector(
           onTap: onTap,
           child: Text(title,
-              style: AppTextStyles.bodyStyle(), textAlign: textAlign));
+              style: textStyle ?? AppTextStyles.bodyStyle(),
+              textAlign: textAlign));
     });
   }
 }

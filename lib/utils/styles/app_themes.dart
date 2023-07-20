@@ -51,18 +51,18 @@ class AppThemeSetting {
 }
 
 var inputDecorationTheme = InputDecorationTheme(
-    border: OutlineInputBorder(
+    border: UnderlineInputBorder(
       borderSide:
           BorderSide(width: 1, color: AppColors.current.secondaryTextColor),
     ),
-    focusedBorder: OutlineInputBorder(
+    focusedBorder: UnderlineInputBorder(
       borderSide:
           BorderSide(width: 1, color: AppColors.current.secondaryTextColor),
     ),
-    enabledBorder: OutlineInputBorder(
+    enabledBorder: UnderlineInputBorder(
       borderSide:
           BorderSide(width: 1, color: AppColors.current.secondaryTextColor),
     ),
-    errorBorder: const OutlineInputBorder(
+    errorBorder: const UnderlineInputBorder(
       borderSide: BorderSide(width: 1, color: Colors.redAccent),
     ));

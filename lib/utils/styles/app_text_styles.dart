@@ -47,7 +47,7 @@ class AppTextStyles {
   }) =>
       _baseTextStyle.merge(TextStyle(
           fontSize:
-              Dimens.d16.responsive(tablet: tablet, ultraTablet: ultraTablet),
+              Dimens.d30.responsive(tablet: tablet, ultraTablet: ultraTablet),
           fontWeight: FontWeight.bold,
           color: AppColors.current.secondaryTextColor,
           fontFamily: QpAppStrings.kRaleWayFont));
@@ -63,7 +63,8 @@ class AppTextStyles {
           color: Common.isDarkMode()
               ? Colors.white60
               : AppColors.current.secondaryColor,
-          fontFamily: QpAppStrings.kRaleWayFont));
+          fontFamily: QpAppStrings.kRaleWayFont,
+          fontStyle: FontStyle.italic));
 
   static TextStyle btnStyle({
     double? tablet,

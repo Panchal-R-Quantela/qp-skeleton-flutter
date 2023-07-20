@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../utils/validations.dart';
 
-class FormTextFormField extends StatelessWidget with InputValidationMixin {
+class QpSkeletonTextFormField extends StatelessWidget
+    with InputValidationMixin {
   final String hintText;
   final ValueChanged<String>? onChanged;
 
-  FormTextFormField({Key? key, required this.hintText, this.onChanged})
+  QpSkeletonTextFormField({Key? key, required this.hintText, this.onChanged})
       : super(key: key);
 
   @override
@@ -25,11 +26,11 @@ class FormTextFormField extends StatelessWidget with InputValidationMixin {
   }
 }
 
-class EmailTextFormField extends StatelessWidget with InputValidationMixin {
+class QpEmailTextFormField extends StatelessWidget with InputValidationMixin {
   final String hintText;
   final ValueChanged<String>? onChanged;
 
-  EmailTextFormField({Key? key, required this.hintText, this.onChanged})
+  QpEmailTextFormField({Key? key, required this.hintText, this.onChanged})
       : super(key: key);
 
   @override
@@ -50,11 +51,13 @@ class EmailTextFormField extends StatelessWidget with InputValidationMixin {
   }
 }
 
-class PasswordTextFormField extends StatelessWidget with InputValidationMixin {
+class QpPasswordTextFormField extends StatelessWidget
+    with InputValidationMixin {
   final String hintText;
-  ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onChanged;
 
-  PasswordTextFormField({Key? key, this.hintText = 'Password', this.onChanged})
+  QpPasswordTextFormField(
+      {Key? key, this.hintText = 'Password', this.onChanged})
       : super(key: key);
 
   @override
@@ -71,12 +74,14 @@ class PasswordTextFormField extends StatelessWidget with InputValidationMixin {
         }
       },
       onChanged: (val) {
-        onChanged!(val);
+        if(onChanged!=null) {
+          onChanged!(val);
+        }
       },
     );
   }
 }
 
 InputDecoration inputDecoration(String hintText) {
-  return InputDecoration(hintText: 'Enter $hintText');
+  return InputDecoration(label: Text(hintText));
 }

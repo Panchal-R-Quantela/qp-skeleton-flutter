@@ -2,64 +2,64 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qp_skeleton_flutter/features/app/app_bloc.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
-import '../../../../common_widgets/buttons.dart';
-import '../../../../common_widgets/edit_text_field.dart';
 import '../../../../common_widgets/text_widgets.dart';
-import '../../../../constants/common_strings.dart';
 import '../../../../constants/image_path.dart';
-import '../../../../routing/navigation_route.dart';
-import '../../../../routing/route_name.dart';
-import '../../../../utils/common.dart';
 import '../../../../utils/dimens/dimens.dart';
-import '../../../../utils/global_keys.dart';
 import '../../../../utils/styles/app_colors.dart';
 import '../../../../utils/styles/app_text_styles.dart';
 import '../../../app/app_state.dart';
-import '../cubit/auth_cubit.dart';
-import '../cubit/auth_cubit_states.dart';
 import '../widgets/login_screen.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final String? assetImagePath;
+  final String? loginHeader;
+  final String? firstTextFieldHint;
+  final String? secondTextFieldHint;
+  final String? buttonText;
+  final ValueChanged<String>? onChangedFirstField;
+  final ValueChanged<String>? onChangedSecondField;
+
+  LoginPage({
+    Key? key,
+    this.assetImagePath,
+    this.loginHeader,
+    this.buttonText,
+    this.secondTextFieldHint,
+    this.firstTextFieldHint,
+    this.onChangedFirstField,
+    this.onChangedSecondField,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: BlocListener<AuthCubit, AuthCubitState>(
-            listener: (context, state) {
-              if (state is LoginSuccessState) {
-                Common.showToast(msg: state.msg);
-                // AppNavigationRouter.instance.pushAndRemoveUntil(
-                //     NavigationRoute.getRoute(RouteName.homePage),
-                //     untilRoute: RouteName.loginPage);
-                AppNavigationRouter.instance.push(
-                  NavigationRoute.getRoute(RouteName.homePage),
-                );
-              } else if (state is LoginErrorState) {
-                Common.showToast(msg: state.msg);
-              }
-            },
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Stack(
-                  children: [
-                    Image.asset(
-                      ImagePath.kOnBoardingLogo2,
-                      height: MediaQuery.of(context).size.height / 2.5,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.fitWidth,
-                    ),
-                    ThemeChangeWidget()
-                  ],
-                ),
-                const LoginForm(),
-                VP(size: Dimens.d30.responsive()),
-                const LoginIssueSignUp()
-              ],
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Stack(
+                children: [
+                  Image.asset(
+                    assetImagePath ?? ImagePath.kOnBoardingLogo2,
+                    height: MediaQuery.of(context).size.height / 2.5,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.fitWidth,
+                  ),
+                  const ThemeChangeWidget()
+                ],
+              ),
+              LoginForm(
+                buttonText: buttonText,
+                firstTextFieldHint: firstTextFieldHint,
+                loginHeader: loginHeader,
+                onChangedFirstField: onChangedFirstField,
+                onChangedSecondField: onChangedSecondField,
+                secondTextFieldHint: secondTextFieldHint,
+              ),
+              VP(size: Dimens.d30.responsive()),
+              const LoginIssueSignUp()
+            ],
           ),
         ),
       ),
@@ -77,7 +77,7 @@ class ThemeChangeWidget extends StatelessWidget {
         return current is AppThemeState;
       },
       builder: (context, state) {
-        return Container(
+        return SizedBox(
           width: 150,
           child: SwitchListTile.adaptive(
             title: Text(

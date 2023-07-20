@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:qp_skeleton_flutter/routing/route_name.dart';
 import '../features/authentication/presentation/pages/login_page.dart';
 import '../features/splash/splash_screen.dart';
-import '../features/users/presentation/pages/user_list_page.dart';
 
 class NavigationRoute {
   /* static Route<dynamic>? getRoute(RouteSettings settings) {
@@ -27,9 +26,7 @@ class NavigationRoute {
     if (name == RouteName.initialRoute) {
       return _buildRoute(name, SplashScreen());
     } else if (name == RouteName.loginPage) {
-      return _buildRoute(name, const LoginPage());
-    } else if (name == RouteName.homePage) {
-      return _buildRoute(name, const MyHomePage());
+      return _buildRoute(name, LoginPage());
     } else {
       return _buildRoute(name, SplashScreen());
     }

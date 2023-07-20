@@ -10,11 +10,8 @@ import 'package:qp_skeleton_flutter/utils/styles/app_themes.dart';
 import 'constants/common_strings.dart';
 import 'features/app/app_bloc.dart';
 import 'features/app/app_state.dart';
-import 'features/authentication/presentation/cubit/auth_cubit.dart';
 import 'features/splash/splash_screen.dart';
-import 'features/users/injection_container_users.dart' as userSl;
-import 'features/authentication/injection_container_auth.dart' as authSl;
-import 'features/users/presentation/cubit/user_cubit.dart';
+import 'features/app/injection_container_app.dart' as appSl;
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -39,9 +36,8 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
         providers: [
           BlocProvider<AppCubit>(
-              create: (_) => authSl.authSl<AppCubit>()..onAppThemeChanged()),
-          BlocProvider<AuthCubit>(create: (_) => authSl.authSl<AuthCubit>()),
-          BlocProvider<UserCubit>(create: (_) => userSl.userSl<UserCubit>())
+              create: (_) => appSl.appSl<AppCubit>()..onAppThemeChanged()),
+          //BlocProvider<AuthCubit>(create: (_) => authSl.authSl<AuthCubit>()),
         ],
         child: BlocBuilder<AppCubit, AppCubitState>(builder: (context, state) {
           if (state is AppThemeState) {
@@ -55,14 +51,8 @@ class _MyAppState extends State<MyApp> {
               return MaterialApp(
                 title: AppStrings.kAppName,
                 themeMode: isDarkThemeState ? ThemeMode.dark : ThemeMode.light,
-                //themeMode: ThemeMode.system,
                 theme: lightTheme,
                 darkTheme: darkTheme,
-                /*theme: BaseTheme.buildLightTheme(),
-                      darkTheme: BaseTheme.buildDarkTheme(),
-                      themeMode: ThemeMode.system,
-                      initialRoute: '/',
-                      onGenerateRoute: NavigationRoute.getRoute,*/
                 home: SplashScreen(),
                 navigatorKey: AppNavigationRouter.instance.navigatorKey,
               );

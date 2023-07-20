@@ -13,9 +13,4 @@ class AppStrings {
   static const String kLoginSuccessful = 'Login Successful';
   static const String kSignUpSuccessful = 'Sign Up Successful';
 
-  //Users
-  static const String kNoRecordsFound = 'No Records Found';
-  static const String kEmail = 'Email';
-  static const String kName = 'Name';
-  static const String kUsers = "Users";
 }

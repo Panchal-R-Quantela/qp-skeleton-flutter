@@ -8,10 +8,24 @@ import '../../../../common_widgets/edit_text_field.dart';
 import '../../../../constants/common_strings.dart';
 import '../../../../utils/common.dart';
 import '../../../../utils/global_keys.dart';
-import '../cubit/auth_cubit.dart';
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({Key? key}) : super(key: key);
+  final String? loginHeader;
+  final String? firstTextFieldHint;
+  final String? secondTextFieldHint;
+  final String? buttonText;
+  final ValueChanged<String>? onChangedFirstField;
+  final ValueChanged<String>? onChangedSecondField;
+
+  LoginForm(
+      {Key? key,
+      this.loginHeader,
+      this.buttonText,
+      this.secondTextFieldHint,
+      this.firstTextFieldHint,
+      this.onChangedFirstField,
+      this.onChangedSecondField})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,26 +37,22 @@ class LoginForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const VP(),
-            const TitleTextBlackWidget(
-              AppStrings.kLoginHeader,
+            TitleTextBlackWidget(
+              loginHeader ?? AppStrings.kLoginHeader,
             ),
             VP(size: Dimens.d20.responsive()),
             FormTextFormField(
-              hintText: AppStrings.kEnterUserName,
-              onChanged: (value) {
-                context.read<AuthCubit>().saveUserName(value);
-              },
+              hintText: firstTextFieldHint ?? AppStrings.kEnterUserName,
+              onChanged: (value) {},
             ),
             const VP(),
             PasswordTextFormField(
-              hintText: AppStrings.kEnterPassword,
-              onChanged: (value) {
-                context.read<AuthCubit>().savePassword(value);
-              },
+              hintText: secondTextFieldHint ?? AppStrings.kEnterPassword,
+              onChanged: (value) {},
             ),
             VP(size: Dimens.d20.responsive()),
             DemoRectangleButton(
-              btnText: AppStrings.kLoginHeader,
+              btnText: buttonText ?? AppStrings.kLoginHeader,
               iconData: Icons.arrow_forward_sharp,
               onTap: () {
                 if (GlobalKeys.loginFormKey.currentState != null &&
@@ -50,7 +60,6 @@ class LoginForm extends StatelessWidget {
                   Common.hideKeyboard();
                   GlobalKeys.loginFormKey.currentState!.save();
                   debugPrint('FORM :: ${GlobalKeys.loginFormKey.currentState}');
-                  context.read<AuthCubit>().loginSubmit();
                 } else if (GlobalKeys.loginFormKey.currentState != null) {
                   GlobalKeys.loginFormKey.currentState!.validate();
                 }

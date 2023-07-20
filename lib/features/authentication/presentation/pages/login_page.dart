@@ -12,6 +12,7 @@ import '../../../../utils/global_keys.dart';
 import '../../../../utils/styles/app_colors.dart';
 import '../../../../utils/styles/app_text_styles.dart';
 import '../../../app/app_state.dart';
+import 'login_form.dart';
 
 class QpSkeletonLoginPage extends StatelessWidget {
   final String loginHeader;
@@ -49,119 +50,91 @@ class QpSkeletonLoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Form(
-        key: GlobalKeys.loginFormKey,
-        child: Center(
-          /** Card Widget **/
-          child: Container(
-            margin: EdgeInsets.all(Dimens.d14.responsive()),
-            child: CustomCardViewWidget(
-              child: SizedBox(
-                height: 400,
-                child: SingleChildScrollView(
-                  child: SymPadding(
-                    padding: Dimens.d18.responsive(),
-                    child: Column(
-                      children: [
-                        QpTitleTextBlackWidget(loginHeader),
-                        VP(size: Dimens.d15.responsive()),
-                        bindRow(
-                            icon: Icons.person,
-                            child: QpEmailTextFormField(
-                              hintText: firstTextFieldHint,
-                              onChanged: onChangedFirstField,
-                            )),
-                        const VP(),
-                        bindRow(
-                            icon: Icons.lock,
-                            child: QpPasswordTextFormField(
-                              hintText: secondTextFieldHint,
-                              onChanged: onChangedSecondField,
-                            )),
-                        VP(size: Dimens.d20.responsive()),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Center(
+        /** Card Widget **/
+        child: Container(
+          margin: EdgeInsets.all(Dimens.d14.responsive()),
+          child: CustomCardViewWidget(
+            child: SizedBox(
+              height: 400,
+              child: SingleChildScrollView(
+                child: SymPadding(
+                  padding: Dimens.d18.responsive(),
+                  child: Column(
+                    children: [
+                      QpTitleTextBlackWidget(loginHeader),
+                      VP(size: Dimens.d15.responsive()),
+                      LoginForm(
+                        onChangedSecondField: onChangedSecondField,
+                        onChangedFirstField: onChangedFirstField,
+                        firstTextFieldHint: firstTextFieldHint,
+                        secondTextFieldHint: secondTextFieldHint,
+                      ),
+                      VP(size: Dimens.d20.responsive()),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          RememberMe(
+                            onChangedRememberMe: onChangedRememberMe,
+                            selectedRememberMe: selectedRememberMe,
+                            bodyTextStyle: bodyTextStyle,
+                          ),
+                          QpBodyTextWidget(
+                            "Forgot password",
+                            onTap: forgetPasswordOnTap,
+                            textStyle: bodyTextStyle,
+                          )
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: Dimens.d24.responsive(),
+                            vertical: Dimens.d15.responsive()),
+                        child: Column(
                           children: [
-                            RememberMe(
-                              onChangedRememberMe: onChangedRememberMe,
-                              selectedRememberMe: selectedRememberMe,
-                              bodyTextStyle: bodyTextStyle,
+                            QpRectangularCircleButton(
+                              btnText: buttonText1,
+                              onTap: () {
+                                if (GlobalKeys.loginFormKey.currentState !=
+                                        null &&
+                                    GlobalKeys.loginFormKey.currentState!
+                                        .validate()) {
+                                  Common.hideKeyboard();
+                                  if (onLogin != null) {
+                                    onLogin!();
+                                  }
+                                  debugPrint("LoggedIn");
+                                } else if (GlobalKeys
+                                        .loginFormKey.currentState !=
+                                    null) {
+                                  GlobalKeys.loginFormKey.currentState!
+                                      .validate();
+                                }
+                              },
                             ),
-                            QpBodyTextWidget(
-                              "Forgot password",
-                              onTap: forgetPasswordOnTap,
-                              textStyle: bodyTextStyle,
-                            )
+                            VP(size: Dimens.d15.responsive()),
+                            QpRectangularCircleButton(
+                              btnText: buttonText2,
+                              iconData: Icons.qr_code_scanner,
+                              onTap: () {
+                                if (onLoginWithScanner != null) {
+                                  onLoginWithScanner!();
+                                }
+                              },
+                            ),
                           ],
                         ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: Dimens.d24.responsive(),
-                              vertical: Dimens.d15.responsive()),
-                          child: Column(
-                            children: [
-                              QpRectangularCircleButton(
-                                btnText: buttonText1,
-                                onTap: () {
-                                  if (GlobalKeys.loginFormKey.currentState !=
-                                          null &&
-                                      GlobalKeys.loginFormKey.currentState!
-                                          .validate()) {
-                                    Common.hideKeyboard();
-                                    if (onLogin != null) {
-                                      onLogin!();
-                                    }
-                                    debugPrint("LoggedIn");
-                                  } else if (GlobalKeys
-                                          .loginFormKey.currentState !=
-                                      null) {
-                                    GlobalKeys.loginFormKey.currentState!
-                                        .validate();
-                                  }
-                                },
-                              ),
-                              VP(size: Dimens.d15.responsive()),
-                              QpRectangularCircleButton(
-                                btnText: buttonText2,
-                                iconData: Icons.qr_code_scanner,
-                                onTap: () {
-                                  if (onLoginWithScanner != null) {
-                                    onLoginWithScanner!();
-                                  }
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ), //Padding
-              ),
+                ),
+              ), //Padding
             ),
-          ), //Card
-        ),
+          ),
+        ), //Card
       ),
     );
   }
-}
-
-Widget bindRow({required IconData icon, required Widget child}) {
-  return Row(
-    mainAxisSize: MainAxisSize.max,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      Padding(
-        padding: const EdgeInsets.only(top: 10.0),
-        child: Icon(
-          icon,
-          size: Dimens.d24.responsive(),
-        ),
-      ),
-      const HP(),
-      Expanded(child: child)
-    ],
-  );
 }
 
 class RememberMe extends StatefulWidget {

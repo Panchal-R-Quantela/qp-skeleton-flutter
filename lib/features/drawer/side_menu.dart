@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
-class SideMenu extends StatelessWidget {
-  String? headerPath;
+import 'drawer_model.dart';
 
-  SideMenu({Key? key, this.headerPath}) : super(key: key);
+class SideMenu extends StatelessWidget {
+  String headerPath;
+  List<DrawerModel>? drawerList;
+  Function? onItemTap;
+
+  SideMenu(
+      {Key? key, required this.headerPath, this.drawerList, this.onItemTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,51 +17,32 @@ class SideMenu extends StatelessWidget {
       child: ListView(
         children: [
           DrawerHeader(
-            child: Image.asset(headerPath ?? "assets/chair1.jpg"),
+            child: /*Image.asset(headerPath)*/ Image.network(
+                'https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148874050.jpg'),
           ),
-          DrawerListTile(
-            title: "Dashboard",
-            svgSrc: "assets/icons/menu_dashboard.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Transaction",
-            svgSrc: "assets/icons/menu_tran.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Task",
-            svgSrc: "assets/icons/menu_task.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Documents",
-            svgSrc: "assets/icons/menu_doc.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Store",
-            svgSrc: "assets/icons/menu_store.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Notification",
-            svgSrc: "assets/icons/menu_notification.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Profile",
-            svgSrc: "assets/icons/menu_profile.svg",
-            press: () {},
-          ),
-          DrawerListTile(
-            title: "Settings",
-            svgSrc: "assets/icons/menu_setting.svg",
-            press: () {},
-          ),
+          ..._buildTiles(drawerList ?? drawerDefaultList),
         ],
       ),
     );
+  }
+
+  List<Widget> _buildTiles(List<DrawerModel> drawerList) {
+    List<Widget> tiles = [];
+    for (var data in drawerList) {
+      tiles.add(DrawerListTile(
+        title: data.title,
+        svgSrc: "",
+        press: () {
+          final index = drawerList.indexOf(data);
+          debugPrint("index :: $index --> item :: ${data.title}");
+          if (onItemTap != null) {
+            onItemTap!(index, data);
+          }
+        },
+      ));
+    }
+
+    return tiles;
   }
 }
 

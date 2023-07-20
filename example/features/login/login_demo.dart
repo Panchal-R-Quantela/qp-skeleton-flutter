@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qp_skeleton_flutter/features/authentication/presentation/pages/login_page.dart';
 import 'package:qp_skeleton_flutter/features/drawer/side_menu.dart';
+import 'package:qp_skeleton_flutter/utils/common.dart';
 
 class LoginDemo extends StatelessWidget {
   const LoginDemo({Key? key}) : super(key: key);
@@ -8,7 +9,12 @@ class LoginDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: SideMenu(),
+      drawer: SideMenu(
+          headerPath: '',
+          onItemTap: (index, item) {
+            Common.showToast(
+                msg: "Clicked item :: $index :: ${item.toString()}");
+          }),
       body: Container(
           color: Colors.green,
           /*decoration: const BoxDecoration(

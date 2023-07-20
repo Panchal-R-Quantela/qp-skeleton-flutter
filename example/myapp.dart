@@ -2,16 +2,18 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qp_skeleton_flutter/routing/navigation_route.dart';
+import 'package:qp_skeleton_flutter/features/app/app_bloc.dart';
+import 'package:qp_skeleton_flutter/features/app/app_state.dart';
+import 'package:qp_skeleton_flutter/features/app/injection_container_app.dart'
+    as appSl;
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/device_constants.dart';
 import 'package:qp_skeleton_flutter/utils/styles/app_colors.dart';
 import 'package:qp_skeleton_flutter/utils/styles/app_themes.dart';
+
 import 'constants/common_strings.dart';
-import 'features/app/app_bloc.dart';
-import 'features/app/app_state.dart';
 import 'features/splash/splash_screen.dart';
-import 'features/app/injection_container_app.dart' as appSl;
+import 'routing/navigation_route.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -37,7 +39,6 @@ class _MyAppState extends State<MyApp> {
         providers: [
           BlocProvider<AppCubit>(
               create: (_) => appSl.appSl<AppCubit>()..onAppThemeChanged()),
-          //BlocProvider<AuthCubit>(create: (_) => authSl.authSl<AuthCubit>()),
         ],
         child: BlocBuilder<AppCubit, AppCubitState>(builder: (context, state) {
           if (state is AppThemeState) {

@@ -3,14 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qp_skeleton_flutter/features/app/app_bloc.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import '../../../../common_widgets/text_widgets.dart';
-import '../../../../constants/image_path.dart';
 import '../../../../utils/dimens/dimens.dart';
 import '../../../../utils/styles/app_colors.dart';
 import '../../../../utils/styles/app_text_styles.dart';
 import '../../../app/app_state.dart';
 import '../widgets/login_screen.dart';
 
-class LoginPage extends StatelessWidget {
+class QpSkeletonLoginPage extends StatelessWidget {
   final String? assetImagePath;
   final String? loginHeader;
   final String? firstTextFieldHint;
@@ -18,17 +17,19 @@ class LoginPage extends StatelessWidget {
   final String? buttonText;
   final ValueChanged<String>? onChangedFirstField;
   final ValueChanged<String>? onChangedSecondField;
+  final Widget? imageAssetWidget;
 
-  LoginPage({
-    Key? key,
-    this.assetImagePath,
-    this.loginHeader,
-    this.buttonText,
-    this.secondTextFieldHint,
-    this.firstTextFieldHint,
-    this.onChangedFirstField,
-    this.onChangedSecondField,
-  }) : super(key: key);
+  QpSkeletonLoginPage(
+      {Key? key,
+      this.assetImagePath,
+      this.loginHeader,
+      this.buttonText,
+      this.secondTextFieldHint,
+      this.firstTextFieldHint,
+      this.onChangedFirstField,
+      this.onChangedSecondField,
+      this.imageAssetWidget})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +41,13 @@ class LoginPage extends StatelessWidget {
             children: <Widget>[
               Stack(
                 children: [
-                  Image.asset(
-                    assetImagePath ?? ImagePath.kOnBoardingLogo2,
-                    height: MediaQuery.of(context).size.height / 2.5,
-                    width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.fitWidth,
-                  ),
+                  imageAssetWidget ??
+                      Image.asset(
+                        assetImagePath ?? "assets/coffeback.jpg",
+                        height: MediaQuery.of(context).size.height / 2.5,
+                        width: MediaQuery.of(context).size.width,
+                        fit: BoxFit.fitWidth,
+                      ),
                   const ThemeChangeWidget()
                 ],
               ),

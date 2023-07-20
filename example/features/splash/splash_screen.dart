@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:qp_skeleton_flutter/routing/navigation_route.dart';
-
+import '../../routing/navigation_route.dart';
 import '../../routing/route_name.dart';
 
 class SplashScreen extends StatefulWidget {

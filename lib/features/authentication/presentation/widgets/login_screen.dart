@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qp_skeleton_flutter/utils/qp_app_strings.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/dimens.dart';
 import '../../../../common_widgets/buttons.dart';
 import '../../../../common_widgets/text_widgets.dart';
 import '../../../../common_widgets/edit_text_field.dart';
-import '../../../../constants/common_strings.dart';
 import '../../../../utils/common.dart';
-import '../../../../utils/global_keys.dart';
 
 class LoginForm extends StatelessWidget {
+  static GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+
   final String? loginHeader;
   final String? firstTextFieldHint;
   final String? secondTextFieldHint;
   final String? buttonText;
   final ValueChanged<String>? onChangedFirstField;
   final ValueChanged<String>? onChangedSecondField;
+  final Function? onSubmit;
 
   LoginForm(
       {Key? key,
@@ -24,13 +25,14 @@ class LoginForm extends StatelessWidget {
       this.secondTextFieldHint,
       this.firstTextFieldHint,
       this.onChangedFirstField,
-      this.onChangedSecondField})
+      this.onChangedSecondField,
+      this.onSubmit})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: GlobalKeys.loginFormKey,
+      key: loginFormKey,
       child: SymPadding(
         padding: Dimens.d20.responsive(),
         child: Column(
@@ -38,30 +40,39 @@ class LoginForm extends StatelessWidget {
           children: [
             const VP(),
             TitleTextBlackWidget(
-              loginHeader ?? AppStrings.kLoginHeader,
+              loginHeader ?? QpAppStrings.kLoginHeader,
             ),
             VP(size: Dimens.d20.responsive()),
             FormTextFormField(
-              hintText: firstTextFieldHint ?? AppStrings.kEnterUserName,
-              onChanged: (value) {},
+              hintText: firstTextFieldHint ?? QpAppStrings.kEnterUserName,
+              onChanged: (value) {
+                if (onChangedFirstField != null) {
+                  onChangedFirstField!(value);
+                }
+              },
             ),
             const VP(),
             PasswordTextFormField(
-              hintText: secondTextFieldHint ?? AppStrings.kEnterPassword,
-              onChanged: (value) {},
+              hintText: secondTextFieldHint ?? QpAppStrings.kEnterPassword,
+              onChanged: (value) {
+                if (onChangedSecondField != null) {
+                  onChangedSecondField!(value);
+                }
+              },
             ),
             VP(size: Dimens.d20.responsive()),
             DemoRectangleButton(
-              btnText: buttonText ?? AppStrings.kLoginHeader,
+              btnText: buttonText ?? QpAppStrings.kLoginHeader,
               iconData: Icons.arrow_forward_sharp,
               onTap: () {
-                if (GlobalKeys.loginFormKey.currentState != null &&
-                    GlobalKeys.loginFormKey.currentState!.validate()) {
+                if (loginFormKey.currentState != null &&
+                    loginFormKey.currentState!.validate()) {
                   Common.hideKeyboard();
-                  GlobalKeys.loginFormKey.currentState!.save();
-                  debugPrint('FORM :: ${GlobalKeys.loginFormKey.currentState}');
-                } else if (GlobalKeys.loginFormKey.currentState != null) {
-                  GlobalKeys.loginFormKey.currentState!.validate();
+                  if (onSubmit != null) {
+                    onSubmit!();
+                  }
+                } else if (loginFormKey.currentState != null) {
+                  loginFormKey.currentState!.validate();
                 }
               },
             ),
@@ -83,11 +94,11 @@ class LoginIssueSignUp extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const BodyTextWidget(
-            AppStrings.kLoginIssue,
+            QpAppStrings.kLoginIssue,
           ),
           const VP(),
           BodyTextWidget(
-            AppStrings.kDoNotHaveAccount,
+            QpAppStrings.kDoNotHaveAccount,
             onTap: () {},
           ),
           VP(size: Dimens.d20.responsive()),

@@ -1,9 +1,4 @@
-class AppStrings {
-  static const String kAppName = "Custom Poc";
-
-  //Fonts
-  static const String kRaleWayFont = 'Raleway';
-
+class QpAppStrings {
   //Login
   static const String kLoginHeader = ' Log In';
   static const String kEnterUserName = 'username';
@@ -13,4 +8,6 @@ class AppStrings {
   static const String kLoginSuccessful = 'Login Successful';
   static const String kSignUpSuccessful = 'Sign Up Successful';
 
+  //Fonts
+  static const String kRaleWayFont = 'Raleway';
 }

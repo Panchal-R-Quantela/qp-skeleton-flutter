@@ -14,7 +14,7 @@ class _SplashScreen extends State<SplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 3), () {
       AppNavigationRouter.instance
-          .push(NavigationRoute.getRoute(RouteName.loginPage));
+          .push(NavigationRoute.getRoute(RouteName.dashboard));
     });
   }
 

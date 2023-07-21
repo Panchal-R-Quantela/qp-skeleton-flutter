@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qp_skeleton_flutter/features/dashboard/base_page.dart';
+import '../features/dashboard/presentation/dashboard.dart';
 import '../features/login/login_demo.dart';
 import '../features/splash/splash_screen.dart';
 import 'route_name.dart';
@@ -26,7 +28,11 @@ class NavigationRoute {
     if (name == RouteName.initialRoute) {
       return _buildRoute(name, SplashScreen());
     } else if (name == RouteName.loginPage) {
-      return _buildRoute(name, LoginDemo());
+      return _buildRoute(name, const LoginDemo());
+    } else if (name == RouteName.dashboard) {
+      return _buildRoute(name, const DashboardDemo());
+    } else if (name == RouteName.basePage) {
+      return _buildRoute(name, QpBasePage(title: parameters));
     } else {
       return _buildRoute(name, SplashScreen());
     }

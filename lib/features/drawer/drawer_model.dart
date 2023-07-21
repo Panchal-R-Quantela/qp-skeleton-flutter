@@ -12,7 +12,7 @@ class DrawerModel {
   }
 }
 
-List<DrawerModel> drawerDefaultList = [
+final List<DrawerModel> drawerDefaultList = [
   DrawerModel(title: "Dashboard"),
   DrawerModel(title: "Transaction"),
   DrawerModel(title: "Task"),

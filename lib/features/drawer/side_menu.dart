@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:qp_skeleton_flutter/utils/common.dart';
 
 import 'drawer_model.dart';
 
 class SideMenu extends StatelessWidget {
-  String headerPath;
-  List<DrawerModel>? drawerList;
-  Function? onItemTap;
+  final String headerPath;
+  final List<DrawerModel>? drawerList;
+  final Function? onItemTap;
 
   SideMenu(
       {Key? key, required this.headerPath, this.drawerList, this.onItemTap})
@@ -17,8 +18,10 @@ class SideMenu extends StatelessWidget {
       child: ListView(
         children: [
           DrawerHeader(
-            child: /*Image.asset(headerPath)*/ Image.network(
-                'https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148874050.jpg'),
+            child: headerPath != ""
+                ? Image.asset(headerPath)
+                : Image.network(
+                    'https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148874050.jpg'),
           ),
           ..._buildTiles(drawerList ?? drawerDefaultList),
         ],
@@ -38,6 +41,7 @@ class SideMenu extends StatelessWidget {
           if (onItemTap != null) {
             onItemTap!(index, data);
           }
+          Common.closeDrawer();
         },
       ));
     }

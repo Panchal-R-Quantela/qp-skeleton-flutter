@@ -12,13 +12,3 @@ class DrawerModel {
   }
 }
 
-final List<DrawerModel> drawerDefaultList = [
-  DrawerModel(title: "Dashboard"),
-  DrawerModel(title: "Transaction"),
-  DrawerModel(title: "Task"),
-  DrawerModel(title: "Documents"),
-  DrawerModel(title: "Store"),
-  DrawerModel(title: "Notification"),
-  DrawerModel(title: "Profile"),
-  DrawerModel(title: "Settings"),
-];

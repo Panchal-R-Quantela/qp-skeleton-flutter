@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/common.dart';
 
-class Header extends StatelessWidget {
-  const Header({
+class QpHeader extends StatelessWidget {
+  const QpHeader({
     Key? key,
   }) : super(key: key);
 

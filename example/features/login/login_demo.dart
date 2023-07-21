@@ -9,7 +9,7 @@ class LoginDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: SideMenu(
+      drawer: QpSideMenu(
           headerPath: '',
           onItemTap: (index, item) {
             Common.showToast(

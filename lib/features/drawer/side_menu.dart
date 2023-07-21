@@ -3,12 +3,24 @@ import 'package:qp_skeleton_flutter/utils/common.dart';
 
 import 'drawer_model.dart';
 
-class SideMenu extends StatelessWidget {
+class QpSideMenu extends StatelessWidget {
   final String headerPath;
   final List<DrawerModel>? drawerList;
   final Function? onItemTap;
 
-  SideMenu(
+  final List<DrawerModel> _drawerDefaultList = [
+    DrawerModel(title: "Dashboard"),
+    DrawerModel(title: "Transaction"),
+    DrawerModel(title: "Task"),
+    DrawerModel(title: "Documents"),
+    DrawerModel(title: "Store"),
+    DrawerModel(title: "Notification"),
+    DrawerModel(title: "Profile"),
+    DrawerModel(title: "Settings"),
+  ];
+
+
+  QpSideMenu(
       {Key? key, required this.headerPath, this.drawerList, this.onItemTap})
       : super(key: key);
 
@@ -23,7 +35,7 @@ class SideMenu extends StatelessWidget {
                 : Image.network(
                     'https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148874050.jpg'),
           ),
-          ..._buildTiles(drawerList ?? drawerDefaultList),
+          ..._buildTiles(drawerList ?? _drawerDefaultList),
         ],
       ),
     );

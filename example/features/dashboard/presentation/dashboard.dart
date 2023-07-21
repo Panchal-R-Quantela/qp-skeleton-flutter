@@ -6,7 +6,17 @@ import '../../../routing/navigation_route.dart';
 import '../../../routing/route_name.dart';
 
 class DashboardDemo extends StatelessWidget {
-  const DashboardDemo({Key? key}) : super(key: key);
+  DashboardDemo({Key? key}) : super(key: key);
+  final List<DrawerModel> list = [
+    DrawerModel(title: "Dashboard"),
+    DrawerModel(title: "Transaction"),
+    DrawerModel(title: "Task"),
+    DrawerModel(title: "Documents"),
+    DrawerModel(title: "Store"),
+    DrawerModel(title: "Notification"),
+    DrawerModel(title: "Profile"),
+    DrawerModel(title: "Settings"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +26,7 @@ class DashboardDemo extends StatelessWidget {
             RouteName.basePage,
             parameters: value.toString()));
       },
-      drawerList: drawerDefaultList,
+      drawerList: list,
     );
   }
 }

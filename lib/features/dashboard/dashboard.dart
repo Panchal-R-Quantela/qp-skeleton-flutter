@@ -22,7 +22,7 @@ class QpSkeletonDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: GlobalKeys.scaffoldDashBoardKey,
-      drawer: SideMenu(
+      drawer: QpSideMenu(
         headerPath: '',
         drawerList: drawerList,
         onItemTap: (index, value) {
@@ -35,7 +35,7 @@ class QpSkeletonDashboard extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              menuHeader ?? const Header(),
+              menuHeader ?? const QpHeader(),
               const SizedBox(height: 10),
               child ?? const Text("Dashboard Ui")
             ],

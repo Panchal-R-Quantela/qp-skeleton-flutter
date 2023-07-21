@@ -30,7 +30,7 @@ class NavigationRoute {
     } else if (name == RouteName.loginPage) {
       return _buildRoute(name, const LoginDemo());
     } else if (name == RouteName.dashboard) {
-      return _buildRoute(name, const DashboardDemo());
+      return _buildRoute(name, DashboardDemo());
     } else if (name == RouteName.basePage) {
       return _buildRoute(name, QpBasePage(title: parameters));
     } else {

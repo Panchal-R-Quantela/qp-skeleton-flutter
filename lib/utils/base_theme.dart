@@ -65,7 +65,7 @@ class BaseTheme {
           bodyLarge: TextStyle(color: bodyLargeColor, fontSize: 20),
           // text
           bodySmall: const TextStyle(color: Colors.blue),
-          bodyMedium: const TextStyle(color: Colors.red, fontSize: 30),
+          bodyMedium: const TextStyle(color: Colors.green, fontSize: 30), //Dashboard text
           //Text Color
           headlineLarge: TextStyle(color: bodyLargeColor),
           headlineMedium: TextStyle(color: bodyLargeColor),
@@ -89,7 +89,11 @@ class BaseTheme {
         secondaryHeaderColor: secondaryColor,
         inputDecorationTheme: inputDecorationTheme,
         cardColor: cardColor,
-        cardTheme: CardTheme(color: cardColor));
+        cardTheme: CardTheme(color: cardColor),
+        checkboxTheme: CheckboxThemeData(
+          fillColor: MaterialStateProperty.all(primaryColor),
+          checkColor: MaterialStateProperty.all(secondaryColor),
+        ));
   }
 
   static ThemeData buildDarkTheme(BuildContext context) {
@@ -157,7 +161,7 @@ class BaseTheme {
           titleSmall:  TextStyle(color:titleMediumColor ), //EditText
           bodyLarge: TextStyle(color: bodyLargeColor, fontSize: 20),
           bodySmall: const TextStyle(color: Colors.blue),
-          bodyMedium: const TextStyle(color: Colors.red, fontSize: 30),
+          bodyMedium: const TextStyle(color: Colors.red, fontSize: 30), //Dashboard Text
           //Text Color
           headlineLarge: TextStyle(color: bodyLargeColor),
           headlineMedium: TextStyle(color: bodyLargeColor),

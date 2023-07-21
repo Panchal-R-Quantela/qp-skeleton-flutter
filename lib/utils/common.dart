@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:qp_skeleton_flutter/utils/global_keys.dart';
-import 'package:qp_skeleton_flutter/utils/styles/app_themes.dart';
 
 class Common {
   static void showToast({required String msg, int timeInSec = 1}) {

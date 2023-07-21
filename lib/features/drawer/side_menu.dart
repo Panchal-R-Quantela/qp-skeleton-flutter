@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qp_skeleton_flutter/utils/common.dart';
 
+import '../../common_widgets/add_theme_button.dart';
 import 'drawer_model.dart';
 
 class QpSideMenu extends StatelessWidget {
@@ -39,6 +40,7 @@ class QpSideMenu extends StatelessWidget {
                 : Image.network(
                     'https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148874050.jpg'),
           ),
+          const QpThemeToggle(),
           ..._buildTiles(drawerList ?? _drawerDefaultList, style),
         ],
       ),

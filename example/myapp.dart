@@ -9,9 +9,6 @@ import 'package:qp_skeleton_flutter/features/app/injection_container_app.dart'
 import 'package:qp_skeleton_flutter/utils/base_theme.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/device_constants.dart';
-import 'package:qp_skeleton_flutter/utils/styles/app_colors.dart';
-import 'package:qp_skeleton_flutter/utils/styles/app_themes.dart';
-
 import 'constants/common_strings.dart';
 import 'features/splash/splash_screen.dart';
 import 'routing/navigation_route.dart';

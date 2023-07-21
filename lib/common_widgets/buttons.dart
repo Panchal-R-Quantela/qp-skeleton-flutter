@@ -7,7 +7,6 @@ import 'package:qp_skeleton_flutter/utils/common.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/dimens.dart';
 import 'package:qp_skeleton_flutter/utils/app_text_styles.dart';
-import '../utils/styles/app_colors.dart';
 
 class QpRectangularCircleButton extends StatelessWidget {
   final String btnText;
@@ -27,32 +26,30 @@ class QpRectangularCircleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, AppCubitState>(builder: (context, snapshot) {
-      return GestureDetector(
-        onTap: onTap,
-        child: Container(
-          padding: EdgeInsets.all(Dimens.d10.responsive()),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: btnColor ?? Theme.of(context).primaryColor,
-          ),
-          child: iconData != null
-              ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Icon(
-                    iconData,
-                    size: Dimens.d22.responsive(),
-                    color: Theme.of(context).iconTheme.color,
-                  ),
-                  const HP(),
-                  Text(
-                    btnText,
-                    style: style,
-                    textAlign: TextAlign.center,
-                  ),
-                ])
-              : Center(child: Text(btnText, style: style)),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(Dimens.d10.responsive()),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          color: btnColor ?? Theme.of(context).primaryColor,
         ),
-      );
-    });
+        child: iconData != null
+            ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Icon(
+            iconData,
+            size: Dimens.d22.responsive(),
+            color: Theme.of(context).iconTheme.color,
+          ),
+          const HP(),
+          Text(
+            btnText,
+            style: style,
+            textAlign: TextAlign.center,
+          ),
+        ])
+            : Center(child: Text(btnText, style: style)),
+      ),
+    );
   }
 }

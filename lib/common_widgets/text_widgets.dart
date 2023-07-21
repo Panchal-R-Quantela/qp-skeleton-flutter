@@ -14,9 +14,7 @@ class QpTitleTextBlackWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, AppCubitState>(builder: (context, snapshot) {
-      return Text(title, style: style, textAlign: textAlign);
-    });
+    return Text(title, style: style, textAlign: textAlign);
   }
 }
 
@@ -32,11 +30,9 @@ class QpBodyTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, AppCubitState>(builder: (context, snapshot) {
-      return GestureDetector(
-          onTap: onTap,
-          child: Text(title, style: textStyle, textAlign: textAlign));
-    });
+    return GestureDetector(
+        onTap: onTap,
+        child: Text(title, style: textStyle, textAlign: textAlign));
   }
 }
 

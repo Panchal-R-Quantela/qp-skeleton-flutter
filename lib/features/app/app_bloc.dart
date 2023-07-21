@@ -8,7 +8,12 @@ class AppCubit extends Cubit<AppCubitState> {
   bool? isDarkTheme;
 
   Future<void> onAppThemeChanged({bool isDarkMode = false}) async {
-    isDarkTheme ??= Common.isDarkMode();
+    if (isDarkTheme == null) {
+      isDarkTheme ??= Common.isDarkMode();
+    } else {
+      isDarkTheme = isDarkMode;
+    }
+
     //_updateThemeSetting(isDarkTheme);
     emit(AppThemeState(isDarkTheme: isDarkTheme!));
     //debugPrint("Current Theme :: ${AppThemeSetting.currentAppThemeType}");

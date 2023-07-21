@@ -9,7 +9,6 @@ import '../../../../common_widgets/text_widgets.dart';
 import '../../../../utils/common.dart';
 import '../../../../utils/dimens/dimens.dart';
 import '../../../../utils/global_keys.dart';
-import '../../../../utils/styles/app_colors.dart';
 import '../../../../utils/app_text_styles.dart';
 import '../../../app/app_state.dart';
 import 'login_form.dart';
@@ -203,33 +202,3 @@ class _RememberMeState extends State<RememberMe> {
     );
   }
 }
-
-//
-// class ThemeChangeWidget extends StatelessWidget {
-//   const ThemeChangeWidget({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocBuilder<AppCubit, AppCubitState>(
-//       buildWhen: (previous, current) {
-//         return current is AppThemeState;
-//       },
-//       builder: (context, state) {
-//         return SizedBox(
-//           width: 150,
-//           child: SwitchListTile.adaptive(
-//             title: Text(
-//               "Dark Mode",
-//               style: AppTextStyles.s14w400Primary(),
-//             ),
-//             tileColor: AppColors.current.primaryColor,
-//             value: (state as AppThemeState).isDarkTheme,
-//             onChanged: (isDarkTheme) => context
-//                 .read<AppCubit>()
-//                 .onAppThemeChanged(isDarkMode: isDarkTheme),
-//           ),
-//         );
-//       },
-//     );
-//   }
-// }

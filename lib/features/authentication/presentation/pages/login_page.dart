@@ -10,7 +10,7 @@ import '../../../../utils/common.dart';
 import '../../../../utils/dimens/dimens.dart';
 import '../../../../utils/global_keys.dart';
 import '../../../../utils/styles/app_colors.dart';
-import '../../../../utils/styles/app_text_styles.dart';
+import '../../../../utils/app_text_styles.dart';
 import '../../../app/app_state.dart';
 import 'login_form.dart';
 
@@ -28,7 +28,10 @@ class QpSkeletonLoginPage extends StatelessWidget {
   final ValueChanged<bool>? onChangedRememberMe;
   final GestureTapCallback? forgetPasswordOnTap;
 
+  final TextStyle? headerTextStyle;
   final TextStyle? bodyTextStyle;
+  final TextStyle? btnTextStyle;
+  final Color? btnColor;
 
   QpSkeletonLoginPage(
       {Key? key,
@@ -44,7 +47,10 @@ class QpSkeletonLoginPage extends StatelessWidget {
       this.selectedRememberMe = false,
       this.onLoginWithScanner,
       this.forgetPasswordOnTap,
-      this.bodyTextStyle})
+      this.bodyTextStyle,
+      this.btnTextStyle,
+      this.headerTextStyle,
+      this.btnColor})
       : super(key: key);
 
   @override
@@ -62,7 +68,8 @@ class QpSkeletonLoginPage extends StatelessWidget {
                   padding: Dimens.d18.responsive(),
                   child: Column(
                     children: [
-                      QpTitleTextBlackWidget(loginHeader),
+                      QpTitleTextBlackWidget(loginHeader,
+                          style: headerTextStyle),
                       VP(size: Dimens.d15.responsive()),
                       LoginForm(
                         onChangedSecondField: onChangedSecondField,
@@ -93,6 +100,7 @@ class QpSkeletonLoginPage extends StatelessWidget {
                         child: Column(
                           children: [
                             QpRectangularCircleButton(
+                              btnColor: btnColor,
                               btnText: buttonText1,
                               onTap: () {
                                 if (GlobalKeys.loginFormKey.currentState !=
@@ -111,9 +119,11 @@ class QpSkeletonLoginPage extends StatelessWidget {
                                       .validate();
                                 }
                               },
+                              style: btnTextStyle,
                             ),
                             VP(size: Dimens.d15.responsive()),
                             QpRectangularCircleButton(
+                              btnColor: btnColor,
                               btnText: buttonText2,
                               iconData: Icons.qr_code_scanner,
                               onTap: () {
@@ -121,6 +131,7 @@ class QpSkeletonLoginPage extends StatelessWidget {
                                   onLoginWithScanner!();
                                 }
                               },
+                              style: btnTextStyle,
                             ),
                           ],
                         ),

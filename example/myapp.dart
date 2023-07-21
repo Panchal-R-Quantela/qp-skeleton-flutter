@@ -6,6 +6,7 @@ import 'package:qp_skeleton_flutter/features/app/app_bloc.dart';
 import 'package:qp_skeleton_flutter/features/app/app_state.dart';
 import 'package:qp_skeleton_flutter/features/app/injection_container_app.dart'
     as appSl;
+import 'package:qp_skeleton_flutter/utils/base_theme.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/device_constants.dart';
 import 'package:qp_skeleton_flutter/utils/styles/app_colors.dart';
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     if (!isWidgetBind) {
       AppDimen.of(context);
-      AppColors.of(context);
+      //AppColors.of(context);
       isWidgetBind = true;
     }
 
@@ -52,8 +53,8 @@ class _MyAppState extends State<MyApp> {
               return MaterialApp(
                 title: AppStrings.kAppName,
                 themeMode: isDarkThemeState ? ThemeMode.dark : ThemeMode.light,
-                theme: lightTheme,
-                darkTheme: darkTheme,
+                theme: BaseTheme.buildLightTheme(context),
+                darkTheme: BaseTheme.buildDarkTheme(context),
                 home: SplashScreen(),
                 navigatorKey: AppNavigationRouter.instance.navigatorKey,
               );

@@ -9,13 +9,17 @@ class QpSkeletonDashboard extends StatelessWidget {
   final Widget? menuHeader;
   final List<DrawerModel>? drawerList;
   final Function onTapDrawerItem;
+  final String drawerHeaderPath;
+  final TextStyle drawerStyle;
 
   QpSkeletonDashboard(
       {Key? key,
       this.child,
       this.menuHeader,
       this.drawerList,
-      required this.onTapDrawerItem})
+      required this.onTapDrawerItem,
+      this.drawerHeaderPath = "",
+      required this.drawerStyle})
       : super(key: key);
 
   @override
@@ -23,7 +27,8 @@ class QpSkeletonDashboard extends StatelessWidget {
     return Scaffold(
       key: GlobalKeys.scaffoldDashBoardKey,
       drawer: QpSideMenu(
-        headerPath: '',
+        style: drawerStyle,
+        headerPath: drawerHeaderPath,
         drawerList: drawerList,
         onItemTap: (index, value) {
           onTapDrawerItem(index, value);
@@ -37,7 +42,7 @@ class QpSkeletonDashboard extends StatelessWidget {
             children: [
               menuHeader ?? const QpHeader(),
               const SizedBox(height: 10),
-              child ?? const Text("Dashboard Ui")
+              child ?? const Text("Dashboard UI")
             ],
           ),
         ),

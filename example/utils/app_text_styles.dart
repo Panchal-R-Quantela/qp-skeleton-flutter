@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
+import 'package:qp_skeleton_flutter/utils/dimens/dimens.dart';
 import 'package:qp_skeleton_flutter/utils/qp_app_strings.dart';
-import '../common.dart';
-import '../dimens/dimens.dart';
-import 'app_colors.dart';
 
 /// AppTextStyle format as follows:
 /// s[fontSize][fontWeight][Color]
@@ -19,6 +17,7 @@ class AppTextStyles {
     // height: 1.0,
   );
 
+/*
   static TextStyle s14w400Primary({
     double? tablet,
     double? ultraTablet,
@@ -39,43 +38,42 @@ class AppTextStyles {
               Dimens.d14.responsive(tablet: tablet, ultraTablet: ultraTablet),
           fontWeight: FontWeight.bold,
           color: AppColors.current.secondaryTextColor,
-          fontFamily: QpAppStrings.kRaleWayFont));
+          fontFamily: QpAppStrings.kRaleWayFont));*/
 
-  static TextStyle titleStyle({
-    double? tablet,
-    double? ultraTablet,
-  }) =>
+  static TextStyle titleStyle(
+          {required BuildContext context,
+          double? tablet,
+          double? ultraTablet,
+          Color? color}) =>
       _baseTextStyle.merge(TextStyle(
           fontSize:
               Dimens.d30.responsive(tablet: tablet, ultraTablet: ultraTablet),
           fontWeight: FontWeight.bold,
-          color: AppColors.current.secondaryTextColor,
+          color: color ?? Theme.of(context).textTheme.titleLarge?.color,
           fontFamily: QpAppStrings.kRaleWayFont));
 
-  static TextStyle bodyStyle({
-    double? tablet,
-    double? ultraTablet,
-  }) =>
+  static TextStyle bodyStyle(
+          {required BuildContext context,
+          double? tablet,
+          double? ultraTablet,
+          Color? color}) =>
       _baseTextStyle.merge(TextStyle(
           fontSize:
               Dimens.d14.responsive(tablet: tablet, ultraTablet: ultraTablet),
           fontWeight: FontWeight.w200,
-          color: Common.isDarkMode()
-              ? Colors.white60
-              : AppColors.current.secondaryColor,
+          color: color ?? Theme.of(context).textTheme.bodyLarge?.color,
           fontFamily: QpAppStrings.kRaleWayFont,
           fontStyle: FontStyle.italic));
 
-  static TextStyle btnStyle({
-    double? tablet,
-    double? ultraTablet,
-  }) =>
+  static TextStyle btnStyle(
+          {required BuildContext context,
+          double? tablet,
+          double? ultraTablet,
+          Color? color}) =>
       _baseTextStyle.merge(TextStyle(
           fontSize:
               Dimens.d15.responsive(tablet: tablet, ultraTablet: ultraTablet),
           fontWeight: FontWeight.w900,
-          color: Common.isDarkMode()
-              ? AppColors.current.primaryColor
-              : AppColors.current.secondaryColor,
+          color: color ?? Theme.of(context).textTheme.titleMedium!.color,
           fontFamily: QpAppStrings.kRaleWayFont));
 }

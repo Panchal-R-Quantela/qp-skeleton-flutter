@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
@@ -66,3 +67,4 @@ var inputDecorationTheme = InputDecorationTheme(
     errorBorder: const UnderlineInputBorder(
       borderSide: BorderSide(width: 1, color: Colors.redAccent),
     ));
+*/

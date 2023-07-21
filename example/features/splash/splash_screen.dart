@@ -14,12 +14,13 @@ class _SplashScreen extends State<SplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 3), () {
       AppNavigationRouter.instance
-          .push(NavigationRoute.getRoute(RouteName.dashboard));
+          .push(NavigationRoute.getRoute(RouteName.loginPage));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return FlutterLogo(size: MediaQuery.of(context).size.height);
+    return Scaffold(
+        body: FlutterLogo(size: MediaQuery.of(context).size.height));
   }
 }

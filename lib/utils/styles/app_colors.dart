@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:qp_skeleton_flutter/utils/styles/app_themes.dart';
 
@@ -62,3 +63,4 @@ class AppColors {
     );
   }
 }
+*/

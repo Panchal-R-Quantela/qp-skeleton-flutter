@@ -7,6 +7,7 @@ class QpSideMenu extends StatelessWidget {
   final String headerPath;
   final List<DrawerModel>? drawerList;
   final Function? onItemTap;
+  final TextStyle style;
 
   final List<DrawerModel> _drawerDefaultList = [
     DrawerModel(title: "Dashboard"),
@@ -19,9 +20,12 @@ class QpSideMenu extends StatelessWidget {
     DrawerModel(title: "Settings"),
   ];
 
-
   QpSideMenu(
-      {Key? key, required this.headerPath, this.drawerList, this.onItemTap})
+      {Key? key,
+      required this.headerPath,
+      this.drawerList,
+      this.onItemTap,
+      required this.style})
       : super(key: key);
 
   @override
@@ -35,16 +39,17 @@ class QpSideMenu extends StatelessWidget {
                 : Image.network(
                     'https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148874050.jpg'),
           ),
-          ..._buildTiles(drawerList ?? _drawerDefaultList),
+          ..._buildTiles(drawerList ?? _drawerDefaultList, style),
         ],
       ),
     );
   }
 
-  List<Widget> _buildTiles(List<DrawerModel> drawerList) {
+  List<Widget> _buildTiles(List<DrawerModel> drawerList, TextStyle? style) {
     List<Widget> tiles = [];
     for (var data in drawerList) {
       tiles.add(DrawerListTile(
+        style: style,
         title: data.title,
         svgSrc: "",
         press: () {
@@ -69,19 +74,22 @@ class DrawerListTile extends StatelessWidget {
     required this.title,
     required this.svgSrc,
     required this.press,
+    required this.style,
   }) : super(key: key);
 
   final String title, svgSrc;
   final VoidCallback press;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: press,
       horizontalTitleGap: 0.0,
-      leading: const Icon(Icons.add),
+      leading: Icon(Icons.add, color: Theme.of(context).iconTheme.color),
       title: Text(
         title,
+        style: style,
       ),
     );
   }

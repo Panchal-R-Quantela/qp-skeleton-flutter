@@ -19,10 +19,10 @@ class Common {
   }
 
   static bool isDarkMode() {
-    return AppThemeSetting.currentAppThemeType == AppThemeType.dark;
-    /*var brightness = SchedulerBinding.instance.window.platformBrightness;
+    //return AppThemeSetting.currentAppThemeType == AppThemeType.dark;
+    var brightness = SchedulerBinding.instance.window.platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
-    return isDarkMode;*/
+    return isDarkMode;
   }
 
   static openDrawer() {

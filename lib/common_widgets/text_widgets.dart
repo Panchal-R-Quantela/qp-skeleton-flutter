@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qp_skeleton_flutter/features/app/app_bloc.dart';
 import 'package:qp_skeleton_flutter/features/app/app_state.dart';
-import '../utils/styles/app_text_styles.dart';
 
 class QpTitleTextBlackWidget extends StatelessWidget {
   final String title;
   final TextAlign? textAlign;
+  final TextStyle? style;
 
-  const QpTitleTextBlackWidget(this.title, {Key? key, this.textAlign})
+  const QpTitleTextBlackWidget(this.title,
+      {Key? key, this.textAlign, this.style})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppCubitState>(builder: (context, snapshot) {
-      return Text(title,
-          style: AppTextStyles.titleStyle(), textAlign: textAlign);
+      return Text(title, style: style, textAlign: textAlign);
     });
   }
 }
@@ -35,9 +35,7 @@ class QpBodyTextWidget extends StatelessWidget {
     return BlocBuilder<AppCubit, AppCubitState>(builder: (context, snapshot) {
       return GestureDetector(
           onTap: onTap,
-          child: Text(title,
-              style: textStyle ?? AppTextStyles.bodyStyle(),
-              textAlign: textAlign));
+          child: Text(title, style: textStyle, textAlign: textAlign));
     });
   }
 }

@@ -1,59 +1,184 @@
-/*
-import 'package:custom_demo_poc/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class BaseTheme {
-  static ThemeData buildLightTheme() {
+  static ThemeData buildLightTheme(BuildContext context) {
+    var primaryColor = const Color.fromARGB(255, 166, 168, 254);
+    var primaryColorDark = const Color.fromARGB(255, 82, 83, 126);
+    var secondaryColor = const Color.fromARGB(255, 62, 62, 70);
+    var errorColor = const Color.fromARGB(255, 62, 62, 70);
+    var primaryTextColor = const Color.fromARGB(255, 62, 62, 70);
+    var secondaryTextColor = const Color.fromARGB(255, 166, 168, 254);
+    var primaryGradient =
+        const LinearGradient(colors: [Color(0xFFFFFFFF), Color(0xFFFE6C30)]);
+    var backgroundColor = Colors.white;
+    var floatingActionColor = primaryColor;
+    var iconColor = Colors.blueGrey;
+    var unselectedColor = Colors.grey;
+
+    /*----- Text theme -----*/
+    var titleTextColor = Colors.black45;
+    var bodyLargeColor = primaryTextColor;
+    var titleMediumColor = Colors.black45;
+
+    var drawerBgColor = Colors.white;
+    var cardColor = Colors.white;
+
+    var inputDecorationTheme = InputDecorationTheme(
+        border: UnderlineInputBorder(
+          borderSide: BorderSide(width: 1, color: secondaryTextColor),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(width: 1, color: secondaryTextColor),
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(width: 1, color: secondaryTextColor),
+        ),
+        errorBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(width: 1, color: Colors.redAccent),
+        ));
+
     ThemeData base = ThemeData.light();
     return base.copyWith(
-      colorScheme: const ColorScheme(
-          brightness: Brightness.light,
-          primary: kColorPrimaryTeal,
-          onPrimary: kColorWhite,
-          secondary: kColorSecondaryAccent,
-          onSecondary: kColorSecondaryAccent,
-          error: kColorRedError,
-          onError: kColorRedError,
-          background: kColorWhite,
-          onBackground: kColorWhite,
-          surface: kColorSecondaryAccent,
-          onSurface: kColorSecondaryAccent),
-      scaffoldBackgroundColor: kColorWhite,
-      popupMenuTheme: const PopupMenuThemeData(color: kColorWhite),
-      textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: kColorPrimaryTeal,
-        selectionColor: kColorSelectionColor,
-      ),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: kColorPrimaryTeal),
-      iconTheme: const IconThemeData(color: kColorWhite),
-      primaryColor: kColorPrimaryTeal,
-      primaryColorDark: kColorPrimaryTeal,
-      brightness: Brightness.light,
-      unselectedWidgetColor: kInActiveColor,
-    );
+        colorScheme: ColorScheme(
+            brightness: Brightness.light,
+            primary: primaryColor,
+            onPrimary: primaryColor,
+            secondary: secondaryColor,
+            onSecondary: secondaryColor,
+            error: errorColor,
+            onError: errorColor,
+            background: backgroundColor,
+            onBackground: backgroundColor,
+            surface: secondaryColor,
+            onSurface: secondaryColor),
+        drawerTheme: DrawerThemeData(
+            backgroundColor: drawerBgColor, shadowColor: primaryColor),
+        textTheme: TextTheme(
+          titleLarge: TextStyle(color: titleTextColor),
+          titleMedium: TextStyle(color: titleMediumColor),
+          titleSmall: TextStyle(color: titleMediumColor),
+          bodyLarge: TextStyle(color: bodyLargeColor, fontSize: 20),
+          // text
+          bodySmall: const TextStyle(color: Colors.blue),
+          bodyMedium: const TextStyle(color: Colors.red, fontSize: 30),
+          //Text Color
+          headlineLarge: TextStyle(color: bodyLargeColor),
+          headlineMedium: TextStyle(color: bodyLargeColor),
+          headlineSmall: TextStyle(color: bodyLargeColor),
+          displayLarge: TextStyle(color: bodyLargeColor),
+          displayMedium: TextStyle(color: bodyLargeColor),
+          displaySmall: TextStyle(color: bodyLargeColor),
+          labelLarge: TextStyle(color: bodyLargeColor),
+          labelMedium: TextStyle(color: bodyLargeColor),
+          labelSmall: TextStyle(color: bodyLargeColor),
+        ),
+        scaffoldBackgroundColor: Colors.white,
+        popupMenuTheme: const PopupMenuThemeData(color: Colors.white),
+        floatingActionButtonTheme:
+            FloatingActionButtonThemeData(backgroundColor: floatingActionColor),
+        iconTheme: IconThemeData(color: iconColor),
+        primaryColor: primaryColor,
+        primaryColorDark: primaryColorDark,
+        brightness: Brightness.light,
+        unselectedWidgetColor: unselectedColor,
+        secondaryHeaderColor: secondaryColor,
+        inputDecorationTheme: inputDecorationTheme,
+        cardColor: cardColor,
+        cardTheme: CardTheme(color: cardColor));
   }
 
-  static ThemeData buildDarkTheme() {
+  static ThemeData buildDarkTheme(BuildContext context) {
+    var primaryColor = const Color.fromARGB(255, 62, 62, 70);
+    var secondaryColor = const Color.fromARGB(255, 166, 168, 254);
+    var errorColor = const Color.fromARGB(255, 62, 62, 70);
+    var primaryTextColor = const Color.fromARGB(255, 166, 168, 254);
+    var secondaryTextColor = const Color.fromARGB(255, 62, 62, 70);
+    var primaryGradient =
+        const LinearGradient(colors: [Color(0xFFFFFFFF), Color(0xFFFE6C30)]);
+    var backgroundColor = const Color(0xff1c1c1c);
+    var floatingActionColor = primaryColor;
+    var iconColor = Colors.white;
+    var unselectedColor = Colors.grey;
+
+    /*----- Text theme -----*/
+    var titleTextColor = primaryTextColor;
+    var bodyLargeColor = primaryTextColor;
+    var titleMediumColor = Colors.white;
+
+    var drawerBgColor = const Color(0xff1f1f1f);
+    var cardColor = const Color(0xff1f1f1f);
+
+    /* const primaryColor = Color(0xFF2697FF);
+    const secondaryColor = Color(0xFF2A2D3E);
+    const bgColor = Color(0xFF212332);*/
+
+    var inputDecorationColor = Colors.grey;
+
+    var inputDecorationTheme = InputDecorationTheme(
+        labelStyle: TextStyle(color: inputDecorationColor),
+        border: UnderlineInputBorder(
+          borderSide: BorderSide(width: 1, color: inputDecorationColor),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(width: 1, color: inputDecorationColor),
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(width: 1, color: inputDecorationColor),
+        ),
+        errorBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(width: 1, color: Colors.redAccent),
+        ),
+        suffixIconColor: inputDecorationColor);
+
     ThemeData base = ThemeData.dark();
     return base.copyWith(
-*/
-/*      colorScheme:  ColorScheme(
-          brightness: Brightness.dark),
-      popupMenuTheme: const PopupMenuThemeData(color: kColorWhite),
-      textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: kColorPrimaryTeal,
-        selectionColor: kColorSelectionColor,
-      ),*//*
-
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: kColorPrimaryTeal),
-      iconTheme: const IconThemeData(color: kColorWhite),
-      primaryColor: kColorWhite,
-      primaryColorDark: kColorWhite,
-      brightness: Brightness.dark,
-      unselectedWidgetColor: kColorUnselectedColorGrey,
-    );
+        colorScheme: ColorScheme(
+            brightness: Brightness.light,
+            primary: primaryColor,
+            onPrimary: primaryColor,
+            secondary: secondaryColor,
+            onSecondary: secondaryColor,
+            error: errorColor,
+            onError: errorColor,
+            background: backgroundColor,
+            onBackground: backgroundColor,
+            surface: secondaryColor,
+            onSurface: secondaryColor),
+        drawerTheme: DrawerThemeData(backgroundColor: drawerBgColor),
+        textTheme: TextTheme(
+          titleLarge: TextStyle(color: titleTextColor),
+          titleMedium: TextStyle(color: titleMediumColor),
+          titleSmall: const TextStyle(color: Colors.blue),
+          bodyLarge: TextStyle(color: bodyLargeColor, fontSize: 20),
+          bodySmall: const TextStyle(color: Colors.blue),
+          bodyMedium: const TextStyle(color: Colors.red, fontSize: 30),
+          //Text Color
+          headlineLarge: TextStyle(color: bodyLargeColor),
+          headlineMedium: TextStyle(color: bodyLargeColor),
+          headlineSmall: TextStyle(color: bodyLargeColor),
+          displayLarge: TextStyle(color: bodyLargeColor),
+          displayMedium: TextStyle(color: bodyLargeColor),
+          displaySmall: TextStyle(color: bodyLargeColor),
+          labelLarge: TextStyle(color: bodyLargeColor),
+          labelMedium: TextStyle(color: bodyLargeColor),
+          labelSmall: TextStyle(color: bodyLargeColor),
+        ),
+        scaffoldBackgroundColor: backgroundColor,
+        popupMenuTheme: const PopupMenuThemeData(color: Colors.white),
+        floatingActionButtonTheme:
+            FloatingActionButtonThemeData(backgroundColor: floatingActionColor),
+        iconTheme: IconThemeData(color: iconColor),
+        primaryColor: primaryColor,
+        primaryColorDark: primaryColor,
+        brightness: Brightness.light,
+        unselectedWidgetColor: unselectedColor,
+        secondaryHeaderColor: secondaryColor,
+        inputDecorationTheme: inputDecorationTheme,
+        cardColor: cardColor,
+        cardTheme: CardTheme(color: cardColor),
+        checkboxTheme: CheckboxThemeData(
+          fillColor: MaterialStateProperty.all(secondaryColor),
+          checkColor: MaterialStateProperty.all(primaryColor),
+        ));
   }
 }
-*/

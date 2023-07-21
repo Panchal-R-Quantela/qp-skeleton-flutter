@@ -22,10 +22,8 @@ class CustomCardViewWidget extends StatelessWidget {
       elevation: elevation,
       shape: OutlineInputBorder(
           borderRadius: BorderRadius.circular(cardShape),
-          borderSide: BorderSide(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.black45
-                  : Colors.white)),
+          borderSide:
+              BorderSide(color: Theme.of(context).cardColor.withAlpha(5))),
       child: child,
     );
   }

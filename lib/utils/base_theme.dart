@@ -5,7 +5,7 @@ class BaseTheme {
     var primaryColor = const Color.fromARGB(255, 166, 168, 254);
     var primaryColorDark = const Color.fromARGB(255, 82, 83, 126);
     var secondaryColor = const Color.fromARGB(255, 62, 62, 70);
-    var errorColor = const Color.fromARGB(255, 62, 62, 70);
+    var errorColor = Colors.red;
     var primaryTextColor = const Color.fromARGB(255, 62, 62, 70);
     var secondaryTextColor = const Color.fromARGB(255, 166, 168, 254);
     var primaryGradient =
@@ -24,17 +24,22 @@ class BaseTheme {
     var cardColor = Colors.white;
 
     var inputDecorationTheme = InputDecorationTheme(
+        labelStyle: TextStyle(color: primaryTextColor),
+        errorStyle: TextStyle(color: errorColor),
         border: UnderlineInputBorder(
-          borderSide: BorderSide(width: 1, color: secondaryTextColor),
+          borderSide: BorderSide(width: 1, color: primaryColor),
         ),
         focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(width: 1, color: secondaryTextColor),
+          borderSide: BorderSide(width: 1, color: primaryColor),
         ),
         enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(width: 1, color: secondaryTextColor),
+          borderSide: BorderSide(width: 1, color: primaryColor),
         ),
         errorBorder: const UnderlineInputBorder(
           borderSide: BorderSide(width: 1, color: Colors.redAccent),
+        ),
+        disabledBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(width: 1, color: Colors.grey),
         ));
 
     ThemeData base = ThemeData.light();
@@ -56,7 +61,7 @@ class BaseTheme {
         textTheme: TextTheme(
           titleLarge: TextStyle(color: titleTextColor),
           titleMedium: TextStyle(color: titleMediumColor),
-          titleSmall: TextStyle(color: titleMediumColor),
+          titleSmall: TextStyle(color: titleMediumColor), //EditText
           bodyLarge: TextStyle(color: bodyLargeColor, fontSize: 20),
           // text
           bodySmall: const TextStyle(color: Colors.blue),
@@ -89,8 +94,9 @@ class BaseTheme {
 
   static ThemeData buildDarkTheme(BuildContext context) {
     var primaryColor = const Color.fromARGB(255, 62, 62, 70);
+    var primaryColorDark = const Color.fromARGB(255, 82, 83, 126);
     var secondaryColor = const Color.fromARGB(255, 166, 168, 254);
-    var errorColor = const Color.fromARGB(255, 62, 62, 70);
+    var errorColor = Colors.red;
     var primaryTextColor = const Color.fromARGB(255, 166, 168, 254);
     var secondaryTextColor = const Color.fromARGB(255, 62, 62, 70);
     var primaryGradient =
@@ -148,7 +154,7 @@ class BaseTheme {
         textTheme: TextTheme(
           titleLarge: TextStyle(color: titleTextColor),
           titleMedium: TextStyle(color: titleMediumColor),
-          titleSmall: const TextStyle(color: Colors.blue),
+          titleSmall:  TextStyle(color:titleMediumColor ), //EditText
           bodyLarge: TextStyle(color: bodyLargeColor, fontSize: 20),
           bodySmall: const TextStyle(color: Colors.blue),
           bodyMedium: const TextStyle(color: Colors.red, fontSize: 30),
@@ -169,7 +175,7 @@ class BaseTheme {
             FloatingActionButtonThemeData(backgroundColor: floatingActionColor),
         iconTheme: IconThemeData(color: iconColor),
         primaryColor: primaryColor,
-        primaryColorDark: primaryColor,
+        primaryColorDark: primaryColorDark,
         brightness: Brightness.light,
         unselectedWidgetColor: unselectedColor,
         secondaryHeaderColor: secondaryColor,

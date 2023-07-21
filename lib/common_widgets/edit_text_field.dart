@@ -34,6 +34,7 @@ class _QpSkeletonTextFormFieldState extends State<QpSkeletonTextFormField>
     return TextFormField(
         controller: controller,
         decoration: inputDecoration(widget.hintText),
+        style: bottomTextStyle(context),
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Enter ${widget.hintText}';
@@ -78,6 +79,7 @@ class _QpEmailTextFormFieldState extends State<QpEmailTextFormField>
     return TextFormField(
       controller: controller,
       decoration: inputDecoration(widget.hintText),
+      style: bottomTextStyle(context),
       validator: (email) {
         if (email == null || email.isEmpty) {
           return 'Enter ${widget.hintText}';
@@ -132,6 +134,7 @@ class _QpPasswordTextFormFieldState extends State<QpPasswordTextFormField>
     return TextFormField(
       controller: controller,
       obscureText: !_passwordVisible,
+      style: bottomTextStyle(context),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.only(top: 5.0),
         label: Text(widget.hintText),
@@ -170,4 +173,8 @@ InputDecoration inputDecoration(String hintText) {
     label: Text(hintText),
     contentPadding: const EdgeInsets.only(top: 5.0),
   );
+}
+
+TextStyle bottomTextStyle(BuildContext context) {
+  return TextStyle(color: Theme.of(context).textTheme.titleSmall?.color);
 }

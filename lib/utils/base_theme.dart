@@ -61,11 +61,13 @@ class BaseTheme {
         textTheme: TextTheme(
           titleLarge: TextStyle(color: titleTextColor),
           titleMedium: TextStyle(color: titleMediumColor),
-          titleSmall: TextStyle(color: titleMediumColor), //EditText
+          titleSmall: TextStyle(color: titleMediumColor),
+          //EditText
           bodyLarge: TextStyle(color: bodyLargeColor, fontSize: 20),
           // text
           bodySmall: const TextStyle(color: Colors.blue),
-          bodyMedium: const TextStyle(color: Colors.green, fontSize: 30), //Dashboard text
+          bodyMedium: const TextStyle(color: Colors.green, fontSize: 30),
+          //Dashboard text
           //Text Color
           headlineLarge: TextStyle(color: bodyLargeColor),
           headlineMedium: TextStyle(color: bodyLargeColor),
@@ -93,7 +95,12 @@ class BaseTheme {
         checkboxTheme: CheckboxThemeData(
           fillColor: MaterialStateProperty.all(primaryColor),
           checkColor: MaterialStateProperty.all(secondaryColor),
-        ));
+        ),
+        appBarTheme: AppBarTheme(
+            color: primaryColor,
+            iconTheme: const IconThemeData(color: Colors.white),
+            titleTextStyle:
+                const TextStyle(color: Colors.white, fontSize: 16)));
   }
 
   static ThemeData buildDarkTheme(BuildContext context) {
@@ -158,10 +165,12 @@ class BaseTheme {
         textTheme: TextTheme(
           titleLarge: TextStyle(color: titleTextColor),
           titleMedium: TextStyle(color: titleMediumColor),
-          titleSmall:  TextStyle(color:titleMediumColor ), //EditText
+          titleSmall: TextStyle(color: titleMediumColor),
+          //EditText
           bodyLarge: TextStyle(color: bodyLargeColor, fontSize: 20),
           bodySmall: const TextStyle(color: Colors.blue),
-          bodyMedium: const TextStyle(color: Colors.red, fontSize: 30), //Dashboard Text
+          bodyMedium: const TextStyle(color: Colors.red, fontSize: 30),
+          //Dashboard Text
           //Text Color
           headlineLarge: TextStyle(color: bodyLargeColor),
           headlineMedium: TextStyle(color: bodyLargeColor),
@@ -189,6 +198,11 @@ class BaseTheme {
         checkboxTheme: CheckboxThemeData(
           fillColor: MaterialStateProperty.all(secondaryColor),
           checkColor: MaterialStateProperty.all(primaryColor),
-        ));
+        ),
+        appBarTheme: AppBarTheme(
+            color: primaryColor,
+            iconTheme: const IconThemeData(color: Colors.white),
+            titleTextStyle:
+                const TextStyle(color: Colors.white, fontSize: 16)));
   }
 }

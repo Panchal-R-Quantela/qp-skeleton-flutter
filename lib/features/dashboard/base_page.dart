@@ -9,8 +9,9 @@ class QpBasePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text(title)),
       body: SafeArea(
-        child: Center(child: QpTitleTextBlackWidget(title)),
+        child: Center(child: QpTitleTextBlackWidget("Welcome to $title")),
       ),
     );
   }

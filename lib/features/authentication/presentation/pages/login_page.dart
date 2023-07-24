@@ -12,7 +12,7 @@ import '../../../../utils/global_keys.dart';
 import '../../../app/app_state.dart';
 import 'login_form.dart';
 
-class QpSkeletonLoginPage extends StatelessWidget {
+class QpSkeletonLoginPage extends StatefulWidget {
   final String loginHeader;
   final String firstTextFieldHint;
   final String secondTextFieldHint;
@@ -52,6 +52,20 @@ class QpSkeletonLoginPage extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<QpSkeletonLoginPage> createState() => _QpSkeletonLoginPageState();
+}
+
+class _QpSkeletonLoginPageState extends State<QpSkeletonLoginPage> {
+  late GlobalKey<FormState> loginFormKey;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loginFormKey = GlobalKey<FormState>();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Center(
@@ -66,28 +80,31 @@ class QpSkeletonLoginPage extends StatelessWidget {
                   padding: Dimens.d18.responsive(),
                   child: Column(
                     children: [
-                      QpTitleTextBlackWidget(loginHeader,
-                          style: headerTextStyle),
+                      QpTitleTextBlackWidget(widget.loginHeader,
+                          style: widget.headerTextStyle),
                       VP(size: Dimens.d15.responsive()),
-                      LoginForm(
-                        onChangedSecondField: onChangedSecondField,
-                        onChangedFirstField: onChangedFirstField,
-                        firstTextFieldHint: firstTextFieldHint,
-                        secondTextFieldHint: secondTextFieldHint,
+                      Form(
+                        key: loginFormKey,
+                        child: LoginForm(
+                          onChangedSecondField: widget.onChangedSecondField,
+                          onChangedFirstField: widget.onChangedFirstField,
+                          firstTextFieldHint: widget.firstTextFieldHint,
+                          secondTextFieldHint: widget.secondTextFieldHint,
+                        ),
                       ),
                       VP(size: Dimens.d20.responsive()),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           RememberMe(
-                            onChangedRememberMe: onChangedRememberMe,
-                            selectedRememberMe: selectedRememberMe,
-                            bodyTextStyle: bodyTextStyle,
+                            onChangedRememberMe: widget.onChangedRememberMe,
+                            selectedRememberMe: widget.selectedRememberMe,
+                            bodyTextStyle: widget.bodyTextStyle,
                           ),
                           QpBodyTextWidget(
                             "Forgot password",
-                            onTap: forgetPasswordOnTap,
-                            textStyle: bodyTextStyle,
+                            onTap: widget.forgetPasswordOnTap,
+                            textStyle: widget.bodyTextStyle,
                           )
                         ],
                       ),
@@ -98,38 +115,33 @@ class QpSkeletonLoginPage extends StatelessWidget {
                         child: Column(
                           children: [
                             QpRectangularCircleButton(
-                              btnColor: btnColor,
-                              btnText: buttonText1,
+                              btnColor: widget.btnColor,
+                              btnText: widget.buttonText1,
                               onTap: () {
-                                if (GlobalKeys.loginFormKey.currentState !=
-                                        null &&
-                                    GlobalKeys.loginFormKey.currentState!
-                                        .validate()) {
+                                if (loginFormKey.currentState != null &&
+                                    loginFormKey.currentState!.validate()) {
                                   Common.hideKeyboard();
-                                  if (onLogin != null) {
-                                    onLogin!();
+                                  if (widget.onLogin != null) {
+                                    widget.onLogin!();
                                   }
                                   debugPrint("LoggedIn");
-                                } else if (GlobalKeys
-                                        .loginFormKey.currentState !=
-                                    null) {
-                                  GlobalKeys.loginFormKey.currentState!
-                                      .validate();
+                                } else if (loginFormKey.currentState != null) {
+                                  loginFormKey.currentState!.validate();
                                 }
                               },
-                              style: btnTextStyle,
+                              style: widget.btnTextStyle,
                             ),
                             VP(size: Dimens.d15.responsive()),
                             QpRectangularCircleButton(
-                              btnColor: btnColor,
-                              btnText: buttonText2,
+                              btnColor: widget.btnColor,
+                              btnText: widget.buttonText2,
                               iconData: Icons.qr_code_scanner,
                               onTap: () {
-                                if (onLoginWithScanner != null) {
-                                  onLoginWithScanner!();
+                                if (widget.onLoginWithScanner != null) {
+                                  widget.onLoginWithScanner!();
                                 }
                               },
-                              style: btnTextStyle,
+                              style: widget.btnTextStyle,
                             ),
                           ],
                         ),

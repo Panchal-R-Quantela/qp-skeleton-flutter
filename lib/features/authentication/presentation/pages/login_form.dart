@@ -23,25 +23,23 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-        key: GlobalKeys.loginFormKey,
-        child: Column(
-          children: [
-            bindRow(
-                icon: Icons.person,
-                child: QpEmailTextFormField(
-                  hintText: firstTextFieldHint,
-                  onChanged: onChangedFirstField,
-                )),
-            const VP(),
-            bindRow(
-                icon: Icons.lock,
-                child: QpPasswordTextFormField(
-                  hintText: secondTextFieldHint,
-                  onChanged: onChangedSecondField,
-                )),
-          ],
-        ));
+    return Column(
+      children: [
+        bindRow(
+            icon: Icons.person,
+            child: QpEmailTextFormField(
+              hintText: firstTextFieldHint,
+              onChanged: onChangedFirstField,
+            )),
+        const VP(),
+        bindRow(
+            icon: Icons.lock,
+            child: QpPasswordTextFormField(
+              hintText: secondTextFieldHint,
+              onChanged: onChangedSecondField,
+            )),
+      ],
+    );
   }
 
   Widget bindRow({required IconData icon, required Widget child}) {

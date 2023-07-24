@@ -17,6 +17,7 @@ class DashboardDemo extends StatelessWidget {
     DrawerModel(title: "Notification"),
     DrawerModel(title: "Profile"),
     DrawerModel(title: "Settings"),
+    DrawerModel(title: "Logout"),
   ];
 
   @override
@@ -24,9 +25,14 @@ class DashboardDemo extends StatelessWidget {
     return QpSkeletonDashboard(
       drawerStyle: AppTextStyles.bodyStyle(context: context),
       onTapDrawerItem: (index, value) {
-        AppNavigationRouter.instance.push(NavigationRoute.getRoute(
-            RouteName.basePage,
-            parameters: value.toString()));
+        if (value.toString() == "Logout") {
+          AppNavigationRouter.instance.pushAndRemoveUntil(
+              NavigationRoute.getRoute(RouteName.loginPage));
+        } else {
+          AppNavigationRouter.instance.push(NavigationRoute.getRoute(
+              RouteName.basePage,
+              parameters: value.toString()));
+        }
       },
       drawerList: list,
     );

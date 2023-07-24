@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:qp_skeleton_flutter/features/drawer/drawer_model.dart';
 import 'package:qp_skeleton_flutter/features/drawer/side_menu.dart';
 import 'package:qp_skeleton_flutter/utils/global_keys.dart';
@@ -12,18 +13,21 @@ class QpSkeletonDashboard extends StatelessWidget {
   final String drawerHeaderPath;
   final TextStyle drawerStyle;
 
-  QpSkeletonDashboard(
-      {Key? key,
-      this.child,
-      this.menuHeader,
-      this.drawerList,
-      required this.onTapDrawerItem,
-      this.drawerHeaderPath = "",
-      required this.drawerStyle})
+  QpSkeletonDashboard({Key? key,
+    this.child,
+    this.menuHeader,
+    this.drawerList,
+    required this.onTapDrawerItem,
+    this.drawerHeaderPath = "",
+    required this.drawerStyle})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Theme
+            .of(context)
+            .primaryColor));
     return Scaffold(
       key: GlobalKeys.scaffoldDashBoardKey,
       drawer: QpSideMenu(

@@ -31,18 +31,18 @@ class QpRectangularCircleButton extends StatelessWidget {
         ),
         child: iconData != null
             ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Icon(
-            iconData,
-            size: Dimens.d22.responsive(),
-            color: Theme.of(context).iconTheme.color,
-          ),
-          const HP(),
-          Text(
-            btnText,
-            style: style,
-            textAlign: TextAlign.center,
-          ),
-        ])
+                Icon(
+                  iconData,
+                  size: Dimens.d22.responsive(),
+                  color: style?.color ?? Theme.of(context).iconTheme.color,
+                ),
+                const HP(),
+                Text(
+                  btnText,
+                  style: style,
+                  textAlign: TextAlign.center,
+                ),
+              ])
             : Center(child: Text(btnText, style: style)),
       ),
     );

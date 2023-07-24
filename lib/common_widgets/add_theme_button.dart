@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 
 import '../features/app/app_bloc.dart';
 import '../features/app/app_state.dart';
+import '../utils/dimens/dimens.dart';
 
 class QpThemeToggle extends StatelessWidget {
   const QpThemeToggle({Key? key}) : super(key: key);
@@ -17,10 +19,11 @@ class QpThemeToggle extends StatelessWidget {
         return SizedBox(
           width: 100,
           child: SwitchListTile.adaptive(
-            title: const Text(
+            title: Text(
               "Dark Mode",
+              style: TextStyle(fontSize: Dimens.d15.responsive()),
             ),
-            tileColor: Theme.of(context).primaryColor,
+            tileColor: Theme.of(context).cardColor,
             value: (state as AppThemeState).isDarkTheme,
             onChanged: (isDarkTheme) => context
                 .read<AppCubit>()

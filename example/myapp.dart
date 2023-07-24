@@ -9,7 +9,9 @@ import 'package:qp_skeleton_flutter/features/app/injection_container_app.dart'
 import 'package:qp_skeleton_flutter/utils/base_theme.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/device_constants.dart';
+import 'constants/color_constants.dart';
 import 'constants/common_strings.dart';
+import 'features/dashboard/presentation/dashboard.dart';
 import 'features/splash/splash_screen.dart';
 import 'routing/navigation_route.dart';
 
@@ -27,6 +29,7 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     if (!isWidgetBind) {
       AppDimen.of(context);
       //AppColors.of(context);
@@ -50,9 +53,12 @@ class _MyAppState extends State<MyApp> {
               return MaterialApp(
                 title: AppStrings.kAppName,
                 themeMode: isDarkThemeState ? ThemeMode.dark : ThemeMode.light,
-                theme: BaseTheme.buildLightTheme(context),
+                theme: BaseTheme.buildLightTheme(context,
+                    primaryColor: ColorConstants.colorPrimary,
+                    primaryColorDark: ColorConstants.colorPrimaryDark,
+                    secondaryColor: ColorConstants.colorSecondary),
                 darkTheme: BaseTheme.buildDarkTheme(context),
-                home: SplashScreen(),
+                home: DashboardDemo(),
                 navigatorKey: AppNavigationRouter.instance.navigatorKey,
               );
             },

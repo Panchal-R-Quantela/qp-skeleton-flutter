@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qp_skeleton_flutter/common_widgets/text_widgets.dart';
-import 'package:qp_skeleton_flutter/features/app/app_bloc.dart';
-import 'package:qp_skeleton_flutter/features/app/app_state.dart';
-import 'package:qp_skeleton_flutter/utils/common.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/dimens.dart';
-import 'package:qp_skeleton_flutter/utils/app_text_styles.dart';
 
 class QpRectangularCircleButton extends StatelessWidget {
   final String btnText;

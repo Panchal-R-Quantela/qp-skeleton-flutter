@@ -9,7 +9,6 @@ import '../../../../common_widgets/text_widgets.dart';
 import '../../../../utils/common.dart';
 import '../../../../utils/dimens/dimens.dart';
 import '../../../../utils/global_keys.dart';
-import '../../../../utils/app_text_styles.dart';
 import '../../../app/app_state.dart';
 import 'login_form.dart';
 

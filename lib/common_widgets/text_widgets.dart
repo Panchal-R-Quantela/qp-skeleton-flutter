@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qp_skeleton_flutter/features/app/app_bloc.dart';
-import 'package:qp_skeleton_flutter/features/app/app_state.dart';
+import 'package:qp_skeleton_flutter/features/app/presentation/cubits/app_cubit.dart';
+import 'package:qp_skeleton_flutter/features/app/presentation/cubits/app_state.dart';
 
 class QpTitleTextBlackWidget extends StatelessWidget {
   final String title;

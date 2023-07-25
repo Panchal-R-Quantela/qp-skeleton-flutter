@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 
-import '../features/app/app_bloc.dart';
-import '../features/app/app_state.dart';
+import '../features/app/presentation/cubits/app_cubit.dart';
+import '../features/app/presentation/cubits/app_state.dart';
 import '../utils/dimens/dimens.dart';
 
 class QpThemeToggle extends StatelessWidget {

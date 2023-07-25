@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:qp_skeleton_flutter/features/app/app_bloc.dart';
+import 'package:qp_skeleton_flutter/features/app/presentation/cubits/app_cubit.dart';
 
 final appSl = GetIt.instance;
 

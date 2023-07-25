@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qp_skeleton_flutter/common_widgets/custom_cardview.dart';
-import 'package:qp_skeleton_flutter/common_widgets/edit_text_field.dart';
-import 'package:qp_skeleton_flutter/features/app/app_bloc.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import '../../../../common_widgets/buttons.dart';
 import '../../../../common_widgets/text_widgets.dart';
 import '../../../../utils/common.dart';
 import '../../../../utils/dimens/dimens.dart';
-import '../../../../utils/global_keys.dart';
-import '../../../app/app_state.dart';
 import 'login_form.dart';
 
 class QpSkeletonLoginPage extends StatefulWidget {

@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:qp_skeleton_flutter/features/dashboard/base_page.dart';
 import '../features/dashboard/presentation/dashboard.dart';
-import '../features/login/login_demo.dart';
+import '../features/login/presentation/widgets/login_demo.dart';
+import '../features/login/presentation/widgets/registration.dart';
 import '../features/splash/splash_screen.dart';
+import '../features/workflow/presentation/widgets/client_details.dart';
+import '../features/workflow/presentation/widgets/dynamic_route.dart';
+import '../features/workflow/presentation/widgets/land_details.dart';
+import '../features/workflow/presentation/widgets/payment_details.dart';
+import '../features/workflow/presentation/widgets/registration_approval.dart';
+import '../features/workflow/presentation/widgets/registration_list.dart';
 import 'route_name.dart';
 
 class NavigationRoute {
@@ -33,6 +40,20 @@ class NavigationRoute {
       return _buildRoute(name, DashboardDemo());
     } else if (name == RouteName.basePage) {
       return _buildRoute(name, QpBasePage(title: parameters));
+    } else if (name == RouteName.registration) {
+      return _buildRoute(name, const Registration());
+    } else if (name == RouteName.clientDetails) {
+      return _buildRoute(name, const ClientDetailsPage());
+    } else if (name == RouteName.landDetails) {
+      return _buildRoute(name, const LandDetailsPage());
+    } else if (name == RouteName.paymentDetails) {
+      return _buildRoute(name, const PaymentDetailsPage());
+    } else if (name == RouteName.registrationApproval) {
+      return _buildRoute(name, const RegistrationApprovalPage());
+    } else if (name == RouteName.registrationList) {
+      return _buildRoute(name, const RegistrationListPage());
+    } else if (name == RouteName.dynamicRoute) {
+      return _buildRoute(name, const DynamicRoutePage());
     } else {
       return _buildRoute(name, SplashScreen());
     }

@@ -1,0 +1,31 @@
+{
+  "moduleName": "registration",
+  "module_default_component": "registrationList",
+  "workflow": {
+    "default_component_web": "client_details",
+    "default_component_mobile": "client_details",
+    "data": [
+      {
+        "key": "client_details",
+        "ui_component": "clientDetails.component",
+        "ui_component_mobile": "/client_details",
+        "onSuccess": "payment_details",
+        "onFailure": "0"
+      },
+      {
+        "key": "land_details",
+        "ui_component": "landDetails.component",
+        "ui_component_mobile": "/land_details",
+        "onSuccess": "payment_details",
+        "onFailure": "0"
+      },
+      {
+        "key": "payment_details",
+        "ui_component": "paymentDetails.component",
+        "ui_component_mobile": "/payment_details",
+        "onSuccess": "module_default_component",
+        "onFailure": "0"
+      }
+    ]
+  }
+}

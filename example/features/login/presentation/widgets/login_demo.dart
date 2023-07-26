@@ -3,10 +3,11 @@ import 'package:qp_skeleton_flutter/features/authentication/presentation/pages/l
 import 'package:qp_skeleton_flutter/features/drawer/side_menu.dart';
 import 'package:qp_skeleton_flutter/utils/common.dart';
 
-import '../../constants/color_constants.dart';
-import '../../routing/navigation_route.dart';
-import '../../routing/route_name.dart';
-import '../../utils/app_text_styles.dart';
+import '../../../../constants/color_constants.dart';
+import '../../../../routing/base_routes.dart';
+import '../../../../routing/navigation_route.dart';
+import '../../../../routing/route_name.dart';
+import '../../../../utils/app_text_styles.dart';
 
 class LoginDemo extends StatelessWidget {
   const LoginDemo({Key? key}) : super(key: key);
@@ -23,8 +24,7 @@ class LoginDemo extends StatelessWidget {
             btnTextStyle: AppTextStyles.btnStyle(
                 context: context, color: ColorConstants.colorWhite),
             onLogin: () {
-              AppNavigationRouter.instance
-                  .push(NavigationRoute.getRoute(RouteName.dashboard));
+              BaseRoutes.navigateToDashboard();
             },
             btnColor: ColorConstants.colorGreen,
           )),

@@ -15,7 +15,7 @@ class QpRectangularCircleButton extends StatelessWidget {
       required this.btnText,
       required this.onTap,
       this.iconData,
-      this.style,
+      this.style = const TextStyle(fontSize: 20),
       this.btnColor})
       : super(key: key);
 
@@ -24,6 +24,7 @@ class QpRectangularCircleButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        height: 50,
         padding: EdgeInsets.all(Dimens.d10.responsive()),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),

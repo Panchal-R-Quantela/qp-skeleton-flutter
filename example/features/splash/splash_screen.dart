@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import '../../routing/base_routes.dart';
 import '../../routing/navigation_route.dart';
 import '../../routing/route_name.dart';
 
@@ -13,8 +14,7 @@ class _SplashScreen extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      AppNavigationRouter.instance
-          .push(NavigationRoute.getRoute(RouteName.loginPage));
+      BaseRoutes.navigateToLogin();
     });
   }
 

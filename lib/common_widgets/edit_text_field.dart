@@ -32,19 +32,23 @@ class _QpSkeletonTextFormFieldState extends State<QpSkeletonTextFormField>
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-        controller: controller,
-        decoration: inputDecoration(widget.hintText),
-        style: bottomTextStyle(context),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Enter ${widget.hintText}';
-          } else {
-            return null;
-          }
-        },
-        onChanged: (val) {
-          widget.onChanged!(val);
-        });
+      controller: controller,
+      decoration: inputDecoration(widget.hintText),
+      style: bottomTextStyle(context),
+      validator: (val) {
+        if (val == null || val.isEmpty) {
+          return 'Enter ${widget.hintText}';
+        } else {
+          return null;
+        }
+      },
+      keyboardType: TextInputType.text,
+      onChanged: (value) {
+        if (widget.onChanged != null) {
+          widget.onChanged!(value);
+        }
+      },
+    );
   }
 }
 

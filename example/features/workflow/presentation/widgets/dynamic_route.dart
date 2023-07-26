@@ -8,6 +8,7 @@ import 'package:qp_skeleton_flutter/features/dashboard/base_page.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/dimens.dart';
 
+import '../../../../routing/route_name.dart';
 import '../cubits/work_flow_cubit.dart';
 
 class DynamicRoutePage extends StatelessWidget {
@@ -44,7 +45,7 @@ class DynamicRoutePage extends StatelessWidget {
                   btnText: "Submit",
                   onTap: () {
                     BlocProvider.of<WorkFlowCubit>(context)
-                        .navigateOnWorkFlow();
+                        .navigateOnWorkFlow(RouteName.dynamicRoute);
                   },
                 ),
               )

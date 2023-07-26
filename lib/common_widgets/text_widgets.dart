@@ -14,7 +14,8 @@ class QpTitleTextBlackWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title, style: style, textAlign: textAlign);
+    return Text(title,
+        style: style ?? TextStyle(fontSize: 18), textAlign: textAlign);
   }
 }
 
@@ -32,7 +33,8 @@ class QpBodyTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: onTap,
-        child: Text(title, style: textStyle, textAlign: textAlign));
+        child: Text(title,
+            style: textStyle ?? TextStyle(fontSize: 16), textAlign: textAlign));
   }
 }
 

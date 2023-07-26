@@ -7,13 +7,17 @@ import 'package:qp_skeleton_flutter/common_widgets/text_widgets.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/dimens.dart';
 
+import '../../../../routing/route_name.dart';
 import '../cubits/work_flow_cubit.dart';
 
 class ClientDetailsPage extends StatelessWidget {
-  const ClientDetailsPage({Key? key}) : super(key: key);
+  ClientDetailsPage({Key? key}) : super(key: key);
+
+  late WorkFlowCubit _workFlowCubit;
 
   @override
   Widget build(BuildContext context) {
+    _workFlowCubit = BlocProvider.of<WorkFlowCubit>(context);
     return Scaffold(
       appBar: AppBar(title: const Text("Client Details")),
       body: SymPadding(
@@ -30,11 +34,26 @@ class ClientDetailsPage extends StatelessWidget {
                   children: [
                     const QpBodyTextWidget("Fill the Details"),
                     VP(size: Dimens.d20.responsive()),
-                    QpSkeletonTextFormField(hintText: "Value 1"),
+                    QpSkeletonTextFormField(
+                      hintText: "Value 1",
+                      onChanged: (value) {
+                        _workFlowCubit.saveClientDetails(value1: value);
+                      },
+                    ),
                     const VP(size: Dimens.d15),
-                    QpSkeletonTextFormField(hintText: "Value 2"),
+                    QpSkeletonTextFormField(
+                      hintText: "Value 2",
+                      onChanged: (value) {
+                        _workFlowCubit.saveClientDetails(value2: value);
+                      },
+                    ),
                     const VP(size: Dimens.d15),
-                    QpSkeletonTextFormField(hintText: "Value 3"),
+                    QpSkeletonTextFormField(
+                      hintText: "Value 3",
+                      onChanged: (value) {
+                        _workFlowCubit.saveClientDetails(value3: value);
+                      },
+                    ),
                     VP(size: Dimens.d15.responsive()),
                   ],
                 ),
@@ -46,7 +65,7 @@ class ClientDetailsPage extends StatelessWidget {
               child: QpRectangularCircleButton(
                 btnText: "Submit",
                 onTap: () {
-                  BlocProvider.of<WorkFlowCubit>(context).navigateOnWorkFlow();
+                  _workFlowCubit.navigateOnWorkFlow(RouteName.clientDetails);
                 },
               ),
             )

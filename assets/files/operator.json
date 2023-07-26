@@ -6,7 +6,7 @@
     "default_component_mobile": "registration_Approval",
     "registration_Approval": {
       "ui_component": "registrationApproval.component",
-      "ui_component_mobile": "/registration_Approval",
+      "ui_component_mobile": "/registrationApproval",
       "onSuccess": "module_default_component",
       "onFailure": "0"
     }

@@ -8,6 +8,7 @@ import 'package:qp_skeleton_flutter/features/dashboard/base_page.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/app_dimen.dart';
 import 'package:qp_skeleton_flutter/utils/dimens/dimens.dart';
 
+import '../../../../routing/route_name.dart';
 import '../cubits/work_flow_cubit.dart';
 
 class LandDetailsPage extends StatelessWidget {
@@ -47,7 +48,8 @@ class LandDetailsPage extends StatelessWidget {
               child: QpRectangularCircleButton(
                 btnText: "Submit",
                 onTap: () {
-                  BlocProvider.of<WorkFlowCubit>(context).navigateOnWorkFlow();
+                  BlocProvider.of<WorkFlowCubit>(context)
+                      .navigateOnWorkFlow(RouteName.landDetails);
                 },
               ),
             )

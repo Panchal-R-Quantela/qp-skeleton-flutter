@@ -47,6 +47,7 @@ class BaseRoutes {
         .push(NavigationRoute.getRoute(RouteName.registrationApproval));
   }
   static navigateToRegistrationList() {
+    AppNavigationRouter.instance.popUntil(RouteName.registration);
     AppNavigationRouter.instance
         .push(NavigationRoute.getRoute(RouteName.registrationList));
   }

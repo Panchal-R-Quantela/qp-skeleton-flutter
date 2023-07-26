@@ -22,7 +22,7 @@
       {
         "key": "payment_details",
         "ui_component": "paymentDetails.component",
-        "ui_component_mobile": "/payment_details",
+        "ui_component_mobile": "/paymentDetails",
         "onSuccess": "module_default_component",
         "onFailure": "0"
       }

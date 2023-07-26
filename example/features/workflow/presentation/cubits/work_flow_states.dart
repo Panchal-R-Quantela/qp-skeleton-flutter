@@ -10,6 +10,8 @@ class StateInitial extends WorkFlowCubitState {
   List<Object?> get props => throw UnimplementedError();
 }
 
+class UpdateClientState extends WorkFlowCubitState {}
+
 class NavigateToClientDetailsState extends WorkFlowCubitState {}
 
 class NavigateToLandDetailsState extends WorkFlowCubitState {}

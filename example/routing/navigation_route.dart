@@ -43,15 +43,15 @@ class NavigationRoute {
     } else if (name == RouteName.registration) {
       return _buildRoute(name, const Registration());
     } else if (name == RouteName.clientDetails) {
-      return _buildRoute(name, const ClientDetailsPage());
+      return _buildRoute(name,  ClientDetailsPage());
     } else if (name == RouteName.landDetails) {
-      return _buildRoute(name, const LandDetailsPage());
+      return _buildRoute(name,  LandDetailsPage());
     } else if (name == RouteName.paymentDetails) {
       return _buildRoute(name, const PaymentDetailsPage());
     } else if (name == RouteName.registrationApproval) {
       return _buildRoute(name, const RegistrationApprovalPage());
     } else if (name == RouteName.registrationList) {
-      return _buildRoute(name, const RegistrationListPage());
+      return _buildRoute(name,  RegistrationListPage());
     } else if (name == RouteName.dynamicRoute) {
       return _buildRoute(name, const DynamicRoutePage());
     } else {

@@ -13,9 +13,7 @@ Future<void> init() async {
   /*
   * Members
   * */
-  workflowSl.registerFactory(
-    () => WorkFlowCubit(),
-  );
+  workflowSl.registerFactory(() => WorkFlowCubit());
 
   // Use Cases
   workflowSl.registerLazySingleton(() => GetResponseCase(workflowSl()));

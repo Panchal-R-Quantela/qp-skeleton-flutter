@@ -47,6 +47,7 @@ class BaseRoutes {
     AppNavigationRouter.instance
         .push(NavigationRoute.getRoute(RouteName.registrationApproval));
   }
+
   static navigateToRegistrationList() {
     AppNavigationRouter.instance.popUntil(RouteName.registration);
     AppNavigationRouter.instance
@@ -58,9 +59,10 @@ class BaseRoutes {
         .push(NavigationRoute.getRoute(RouteName.dynamicRoute));
   }
 
-
-  static navigateToWorkFlowRoute(String routeName) {
-    AppNavigationRouter.instance
-        .push(NavigationRoute.getRoute(routeName));
+  static navigateToWorkFlowRoute(String routeName, {bool clearStack = false}) {
+    if (clearStack) {
+      AppNavigationRouter.instance.popUntil(RouteName.registration);
+    }
+    AppNavigationRouter.instance.push(NavigationRoute.getRoute(routeName));
   }
 }

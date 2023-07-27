@@ -11,7 +11,7 @@ class WorkFlowCubit extends Cubit<WorkFlowCubitState> {
   WorkFlowCubit() : super(StateInitial());
 
   bool isClient = true;
-  var currentUiComponent = ''; // Route
+  var currentUiComponent = ''; // Route // ui_component_mobile
   var componentKey = ''; //Obj Key
   Map<String, dynamic> jsonMap = {}; //JsonMap
   Map backStackMap = {}; // Managing Routes backstack
@@ -58,14 +58,14 @@ class WorkFlowCubit extends Cubit<WorkFlowCubitState> {
         currentUiComponent == RouteName.registrationApproval ||
         currentUiComponent == RouteName.dynamicRoute) {
       emit(NavigateToRouteNameState(currentUiComponent));
-    } else if (currentUiComponent == RouteName.registrationList) {
+    } else if (componentKey == "module_default_component") {
       if (clientMap.isNotEmpty && isClient) {
         mapListRegister.add(clientMap);
       }
       if (operatorMap.isNotEmpty && !isClient) {
         mapListRegister.add(operatorMap);
       }
-      emit(NavigateToRegistrationListState());
+      emit(NavigateToModuleDefaultComponentState(currentUiComponent));
     }
 
     /*------Adding key with route ui component for managing backstack----- */

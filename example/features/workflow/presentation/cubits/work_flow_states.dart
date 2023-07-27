@@ -18,4 +18,9 @@ class NavigateToRouteNameState extends WorkFlowCubitState {
   NavigateToRouteNameState(this.routeName);
 }
 
-class NavigateToRegistrationListState extends WorkFlowCubitState {}
+class NavigateToModuleDefaultComponentState extends WorkFlowCubitState {
+  String routeName;
+
+  NavigateToModuleDefaultComponentState(this.routeName);
+}
+//class NavigateToRegistrationListState extends WorkFlowCubitState {}

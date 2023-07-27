@@ -34,8 +34,9 @@ class _RegistrationState extends State<Registration> {
           listener: (context, state) {
             if (state is NavigateToRouteNameState) {
               BaseRoutes.navigateToWorkFlowRoute(state.routeName);
-            } else if (state is NavigateToRegistrationListState) {
-              BaseRoutes.navigateToRegistrationList();
+            } else if (state is NavigateToModuleDefaultComponentState) {
+              BaseRoutes.navigateToWorkFlowRoute(state.routeName,
+                  clearStack: true);
             }
           },
           child: BlocBuilder<WorkFlowCubit, WorkFlowCubitState>(

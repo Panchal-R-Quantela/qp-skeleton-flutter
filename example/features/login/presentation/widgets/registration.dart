@@ -32,18 +32,10 @@ class _RegistrationState extends State<Registration> {
         appBar: AppBar(title: const Text("Registration")),
         body: BlocListener<WorkFlowCubit, WorkFlowCubitState>(
           listener: (context, state) {
-            if (state is NavigateToClientDetailsState) {
-              BaseRoutes.navigateToClientDetails();
-            } else if (state is NavigateToLandDetailsState) {
-              BaseRoutes.navigateToLandDetails();
-            } else if (state is NavigateToPaymentDetailsState) {
-              BaseRoutes.navigateToPaymentDetails();
+            if (state is NavigateToRouteNameState) {
+              BaseRoutes.navigateToWorkFlowRoute(state.routeName);
             } else if (state is NavigateToRegistrationListState) {
               BaseRoutes.navigateToRegistrationList();
-            } else if (state is NavigateToApprovalState) {
-              BaseRoutes.navigateToRegApproval();
-            } else if (state is NavigateToDynamicPageState) {
-              BaseRoutes.navigateToDynamicRoute();
             }
           },
           child: BlocBuilder<WorkFlowCubit, WorkFlowCubitState>(

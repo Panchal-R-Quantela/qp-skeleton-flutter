@@ -11,17 +11,15 @@ class WorkFlowCubit extends Cubit<WorkFlowCubitState> {
   WorkFlowCubit() : super(StateInitial());
 
   bool isClient = true;
-
   var currentUiComponent = ''; // Route
   var componentKey = ''; //Obj Key
-
   Map<String, dynamic> jsonMap = {}; //JsonMap
+  Map backStackMap = {}; // Managing Routes backstack
 
-  List<HashMap> mapListRegister = [];
+  //TODO Remove in Future only for demo
+  List<HashMap> mapListRegister = []; //temporary variable to show data in list
   HashMap clientMap = HashMap(); //temporary variable to show data in list
   HashMap operatorMap = HashMap(); //temporary variable to show data in list
-
-  Map backStackMap = {}; // Managing Routes backstack
 
   updateClient() {
     isClient = !isClient;
@@ -54,16 +52,12 @@ class WorkFlowCubit extends Cubit<WorkFlowCubitState> {
     debugPrint(
         "Current Key :: $componentKey :: Current component :: $currentUiComponent");
 
-    if (currentUiComponent == RouteName.clientDetails) {
-      emit(NavigateToClientDetailsState());
-    } else if (currentUiComponent == RouteName.landDetails) {
-      emit(NavigateToLandDetailsState());
-    } else if (currentUiComponent == RouteName.paymentDetails) {
-      emit(NavigateToPaymentDetailsState());
-    } else if (currentUiComponent == RouteName.registrationApproval) {
-      emit(NavigateToApprovalState());
-    } else if (currentUiComponent == RouteName.dynamicRoute) {
-      emit(NavigateToDynamicPageState()); //for demo
+    if (currentUiComponent == RouteName.clientDetails ||
+        currentUiComponent == RouteName.landDetails ||
+        currentUiComponent == RouteName.paymentDetails ||
+        currentUiComponent == RouteName.registrationApproval ||
+        currentUiComponent == RouteName.dynamicRoute) {
+      emit(NavigateToRouteNameState(currentUiComponent));
     } else if (currentUiComponent == RouteName.registrationList) {
       if (clientMap.isNotEmpty && isClient) {
         mapListRegister.add(clientMap);
@@ -135,3 +129,10 @@ class WorkFlowCubit extends Cubit<WorkFlowCubitState> {
     operatorMap["comment"] = value;
   }
 }
+
+/*  "submit_details": {
+      "ui_component": "paymentDetails.component",
+      "ui_component_mobile": "/dynamicRoute",
+      "onSuccess": "module_default_component",
+      "onFailure": "0"
+    }*/

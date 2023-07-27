@@ -19,14 +19,9 @@
     "payment_details": {
       "ui_component": "paymentDetails.component",
       "ui_component_mobile": "/paymentDetails",
-      "onSuccess": "submit_details",
-      "onFailure": "0"
-    },
-    "submit_details": {
-      "ui_component": "paymentDetails.component",
-      "ui_component_mobile": "/dynamicRoute",
       "onSuccess": "module_default_component",
       "onFailure": "0"
     }
   }
 }
+

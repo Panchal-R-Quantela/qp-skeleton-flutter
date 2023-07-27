@@ -27,6 +27,7 @@ class BaseRoutes {
         .push(NavigationRoute.getRoute(RouteName.registration));
   }
 
+  /*Work flow*/
   static navigateToClientDetails() {
     AppNavigationRouter.instance
         .push(NavigationRoute.getRoute(RouteName.clientDetails));
@@ -55,5 +56,11 @@ class BaseRoutes {
   static navigateToDynamicRoute() {
     AppNavigationRouter.instance
         .push(NavigationRoute.getRoute(RouteName.dynamicRoute));
+  }
+
+
+  static navigateToWorkFlowRoute(String routeName) {
+    AppNavigationRouter.instance
+        .push(NavigationRoute.getRoute(routeName));
   }
 }

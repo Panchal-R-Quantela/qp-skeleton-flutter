@@ -12,14 +12,10 @@ class StateInitial extends WorkFlowCubitState {
 
 class UpdateClientState extends WorkFlowCubitState {}
 
-class NavigateToClientDetailsState extends WorkFlowCubitState {}
+class NavigateToRouteNameState extends WorkFlowCubitState {
+  String routeName;
 
-class NavigateToLandDetailsState extends WorkFlowCubitState {}
-
-class NavigateToPaymentDetailsState extends WorkFlowCubitState {}
-
-class NavigateToApprovalState extends WorkFlowCubitState {}
+  NavigateToRouteNameState(this.routeName);
+}
 
 class NavigateToRegistrationListState extends WorkFlowCubitState {}
-
-class NavigateToDynamicPageState extends WorkFlowCubitState {}

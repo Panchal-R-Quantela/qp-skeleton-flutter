@@ -7,6 +7,7 @@ import 'package:qp_skeleton_flutter/utils/base_theme.dart';
 import 'constants/color_constants.dart';
 import 'constants/common_strings.dart';
 import 'features/dashboard/presentation/dashboard.dart';
+import 'features/splash/splash_screen.dart';
 import 'features/workflow/presentation/cubits/work_flow_cubit.dart';
 import 'routing/navigation_route.dart';
 import 'features/workflow/injection_container.dart' as wf_sl;
@@ -41,7 +42,7 @@ class _MyAppState extends State<MyApp> {
               primaryColorDark: ColorConstants.colorPrimaryDark,
               secondaryColor: ColorConstants.colorSecondary),
           darkTheme: BaseTheme.buildDarkTheme(context),
-          home: DashboardDemo(),
+          home: SplashScreen(),
           navigatorKey: AppNavigationRouter.instance.navigatorKey,
         );
       })),
